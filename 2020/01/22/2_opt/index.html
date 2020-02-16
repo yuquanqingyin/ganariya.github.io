@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2-opt法を実装してみる - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/22/2_opt/" />
+    <!--③-->
+    <meta property="og:title" content="2-opt法を実装してみる" />
+    <!--④-->
+    <meta property="og:description" content="2-opt法を実装してみる" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,はじめにNP困難な問題の一つに巡回セールスマン問題というものがあります。
+これは、$N$個の頂点を順番に訪問するときにかかる最小の移動コストを求める問題です。これは全探索すると$O(N!)$かかり、,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/22/2_opt/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">2-opt法を実装してみる</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img68.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            2-opt法を実装してみる
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/ACO/" rel="tag">ACO</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%BE%A4%E7%9F%A5%E8%83%BD/" rel="tag">群知能</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/22
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>NP困難な問題の一つに巡回セールスマン問題というものがあります。</p>
+<p>これは、$N$個の頂点を順番に訪問するときにかかる最小の移動コストを求める問題です。<br>これは全探索すると$O(N!)$かかり、とてつもない時間がかかってしまいます。（というか解けません･･･）</p>
+<p>そこで、近似解を求める多くの手法が開発されており、その一つに<code>2-opt</code>という手法が開発されています。</p>
+<h2 id="2-opt"><a href="#2-opt" class="headerlink" title="2-opt"></a>2-opt</h2><p>2-optは、局所探索法の一つです。<br>局所探索法とは、現在の解をより良くなるようにGreedyに改良していく手法です。<br>いわゆる<code>山登り法</code>の一つになります。</p>
+<p>2-optでは、巡回セールスマンパスの２つの辺を選んで、移動する順番を入れ替える手法です。<br>もし、入れ替えたほうの移動のほうがより合計移動コストが小さくなるなら、Greedyに入れ替えることを繰り返します。</p>
+<h2 id="2-optのイメージ"><a href="#2-optのイメージ" class="headerlink" title="2-optのイメージ"></a>2-optのイメージ</h2><p><img src="IMG_0374.jpg" alt></p>
+<p>上記の画像を用いて、説明をしていきます。</p>
+<p>ノード$i, j(i < j)$から次のエッジ$(i, i + 1)$, $(j, j + 1)$を交換することにします。<br>もし交換するなら$(i, j), (i + 1, j+1)$となるようにします。</p>
+<p>まず、もともとのコストは<br>$distA = d(i, i+ 1), distB=d(j, j + 1)$だけ移動にかかっていました。<br>ここで、これら以外のパスのコストは、今回の2-optのスワップを行っても影響しないため考えません。</p>
+<p>そして、もしスワップするとすれば増えるコストは<br>$distC = d(i, j), distD = d(i + 1, j + 1)$になります。</p>
+<p>よって、もし$distA + distB > distC + distD$ならば<br>スワップをしたほうが全体のパスのコストが小さくなるためスワップするべきです。</p>
+<p>ここで、問題になるのがスワップをそのまま行うと<br>つまり$i$が向かう次のノードを$j$に、<br>$i+1$が向かう次のノードを$j + 1$にしてしまうと、<br>途中からパスが逆流してしまいます。<br>合計コスト的には問題ないですが、できればきちんと移動パス通りに構築するべきです。</p>
+<p>そこで、画像右のようにすることを考えます。<br>頂点$i$は$j$に向かい、そのあとは順番に$i+1$の方向へ向かって<br>$i+1$から$j+1$に向かいたいです。</p>
+<p>これは、もともと$i, i + 1, …,j-1, j, j+1$のように移動していたのが<br>$i, j, j-1, j-2, …, i + 1, j+1$のように移動するようになっています。</p>
+<p>これは<code>path[i + 1, j + 1)</code>の区間を反転させることと同義です。</p>
+<p>よって、区間$[i, j + 1)$を反転させればきちんと意味のあるパスとして2-optを行うことができます。</p>
+<h2 id="実装"><a href="#実装" class="headerlink" title="実装"></a>実装</h2><p><a href="https://github.com/Ganariya/MTSP_ACO" target="_blank" rel="noopener">GitHubリンク</a></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> tsplib95</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> networkx <span class="hljs-keyword">as</span> nx</span><br><span class="line"><span class="hljs-keyword">import</span> random</span><br><span class="line"></span><br><span class="line">problem = tsplib95.load_problem(<span class="hljs-string">'bays29.tsp'</span>)</span><br><span class="line">G = problem.get_graph()</span><br><span class="line"></span><br><span class="line">n = len(G.nodes)</span><br><span class="line"></span><br><span class="line">s = <span class="hljs-number">1</span></span><br><span class="line">v = s</span><br><span class="line">nodes = [v]</span><br><span class="line">path = []</span><br><span class="line">cost = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 最近傍法</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n - <span class="hljs-number">1</span>):</span><br><span class="line">    candidates = []</span><br><span class="line">    <span class="hljs-keyword">for</span> to <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):</span><br><span class="line">        <span class="hljs-keyword">if</span> to <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> nodes:</span><br><span class="line">            candidates.append((G.edges[v, to][<span class="hljs-string">'weight'</span>], to))</span><br><span class="line">    candidates.sort()</span><br><span class="line">    next_node = candidates[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]</span><br><span class="line">    cost += candidates[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]</span><br><span class="line">    nodes.append(next_node)</span><br><span class="line">    path.append((v, next_node))</span><br><span class="line">    v = next_node</span><br><span class="line">path.append((v, s))</span><br><span class="line">cost += G.edges[v, s][<span class="hljs-string">'weight'</span>]</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">_, ax = plt.subplots()</span><br><span class="line">pos = problem.display_data <span class="hljs-keyword">or</span> problem.node_coords</span><br><span class="line">nx.draw_networkx_nodes(G, pos=pos, ax=ax)</span><br><span class="line">nx.draw_networkx_labels(G, pos=pos, labels={i: str(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(G.nodes) + <span class="hljs-number">1</span>)}, font_size=<span class="hljs-number">8</span>, font_color=<span class="hljs-string">'white'</span>)</span><br><span class="line">nx.draw_networkx_edges(G, pos=pos, edgelist=path, arrows=<span class="hljs-literal">True</span>)</span><br><span class="line">ax.tick_params(left=<span class="hljs-literal">True</span>, bottom=<span class="hljs-literal">True</span>, labelleft=<span class="hljs-literal">True</span>, labelbottom=<span class="hljs-literal">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2-swap</span></span><br><span class="line"><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">10000</span>):</span><br><span class="line">    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:</span><br><span class="line">        i = random.randint(<span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>)</span><br><span class="line">        j = random.randint(<span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">if</span> i != j:</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">    <span class="hljs-keyword">if</span> i > j:</span><br><span class="line">        i, j = j, i</span><br><span class="line"></span><br><span class="line">    distA = G.edges[nodes[i], nodes[i + <span class="hljs-number">1</span>]][<span class="hljs-string">'weight'</span>]</span><br><span class="line">    distB = G.edges[nodes[j], nodes[(j + <span class="hljs-number">1</span>) % n]][<span class="hljs-string">'weight'</span>]</span><br><span class="line">    distC = G.edges[nodes[i], nodes[j]][<span class="hljs-string">'weight'</span>]</span><br><span class="line">    distD = G.edges[nodes[i + <span class="hljs-number">1</span>], nodes[(j + <span class="hljs-number">1</span>) % n]][<span class="hljs-string">'weight'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># コストが小さくなるなら</span></span><br><span class="line">    <span class="hljs-keyword">if</span> distA + distB > distC + distD:</span><br><span class="line">        print(cost, i, j, nodes[i], nodes[j])</span><br><span class="line">        nodes[i + <span class="hljs-number">1</span>:j + <span class="hljs-number">1</span>] = reversed(nodes[i + <span class="hljs-number">1</span>: j + <span class="hljs-number">1</span>])</span><br><span class="line">        cost += (distC + distD - distA - distB)</span><br><span class="line">        path = []</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):</span><br><span class="line">            path.append((nodes[i], nodes[(i + <span class="hljs-number">1</span>) % n]))</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># 描画</span></span><br><span class="line">        plt.figure()</span><br><span class="line">        _, ax = plt.subplots()</span><br><span class="line">        pos = problem.display_data <span class="hljs-keyword">or</span> problem.node_coords</span><br><span class="line">        nx.draw_networkx_nodes(G, pos=pos, ax=ax)</span><br><span class="line">        nx.draw_networkx_labels(G, pos=pos, labels={i: str(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(G.nodes) + <span class="hljs-number">1</span>)}, font_size=<span class="hljs-number">8</span>, font_color=<span class="hljs-string">'white'</span>)</span><br><span class="line">        nx.draw_networkx_edges(G, pos=pos, edgelist=path, arrows=<span class="hljs-literal">True</span>)</span><br><span class="line">        ax.tick_params(left=<span class="hljs-literal">True</span>, bottom=<span class="hljs-literal">True</span>, labelleft=<span class="hljs-literal">True</span>, labelbottom=<span class="hljs-literal">True</span>)</span><br><span class="line">        plt.show()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>まず、最近傍法を先に行ってよりGreedyにパスを構築し<br>NetworkXとMatplotlibで描画を行っています。</p>
+<p>その後、2-optを実行してよりコストが小さくなるならエッジのスワップを行っています。</p>
+<p>配列ごと反転させてよいのが非直感的ですね･･･</p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#はじめに"><span class="toc-number">1.</span> <span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-opt"><span class="toc-number">2.</span> <span class="toc-text">2-opt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-optのイメージ"><span class="toc-number">3.</span> <span class="toc-text">2-optのイメージ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実装"><span class="toc-number">4.</span> <span class="toc-text">実装</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

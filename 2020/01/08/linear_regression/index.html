@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>単回帰をsklearnで試す - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/08/linear_regression/" />
+    <!--③-->
+    <meta property="og:title" content="単回帰をsklearnで試す" />
+    <!--④-->
+    <meta property="og:description" content="単回帰を試す" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,線形回帰線形回帰(linear regression)とは、目的変数$Y$と説明変数$X$から
+$y = f(x)$を与えるような関数$f = X\beta + \epsilon$を求めることである,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/08/linear_regression/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">単回帰をsklearnで試す</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img52.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            単回帰をsklearnで試す
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/" rel="tag">機械学習</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/08
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="線形回帰"><a href="#線形回帰" class="headerlink" title="線形回帰"></a>線形回帰</h2><p>線形回帰(linear regression)とは、目的変数$Y$と説明変数$X$から</p>
+<p>$y = f(x)$を与えるような関数$f = X\beta + \epsilon$<br>を求めることである。<br>$X$は説明変数のベクトルで、$\beta$は係数のベクトルである。<br>$\epsilon$は係数である。</p>
+<p>線形回帰では、複数の説明変数$x_1, x_2, …$は出てくるが二乗は出てこないことに注意する。<br>二乗が出てくると一気に難しく、過学習などの恐れが出てくる。</p>
+<p>単回帰は説明変数が一つのみの場合であり、今回は単回帰のみをsklearnを用いて実装してみる。</p>
+<h2 id="学習方法"><a href="#学習方法" class="headerlink" title="学習方法"></a>学習方法</h2><p>線形回帰の学習方法は主に２つ存在する。</p>
+<ol>
+<li>解析的</li>
+<li>数値的</li>
+</ol>
+<p>である。<br>解析的はいわゆる中学で何度もやった因数分解のように代数で解く手法である。<br>一方、数値的は微分を用いて行う。</p>
+<p>最小二乗法はモデルとの誤差$e$を求めて、この$e$が最小になるように各係数を調整する。</p>
+<p>$\beta_i += -\frac{de}{dx_i} \times \eta$</p>
+<h2 id="勾配降下法"><a href="#勾配降下法" class="headerlink" title="勾配降下法"></a>勾配降下法</h2><p>上記の勾配降下法において主に３つのアルゴリズムがLiniar Regressionでは利用される。</p>
+<h3 id="バッチ勾配降下法"><a href="#バッチ勾配降下法" class="headerlink" title="バッチ勾配降下法"></a>バッチ勾配降下法</h3><p>全部のテストデータを使って学習する。<br>時間がかかる。</p>
+<h3 id="確率的勾配降下法"><a href="#確率的勾配降下法" class="headerlink" title="確率的勾配降下法"></a>確率的勾配降下法</h3><p>ランダムに取り出して学習することを繰り返す。<br>速度は早いが不安定</p>
+<h3 id="ミニバッチ勾配降下法"><a href="#ミニバッチ勾配降下法" class="headerlink" title="ミニバッチ勾配降下法"></a>ミニバッチ勾配降下法</h3><p>ランダムにミニバッチを作って学習する。<br>高速であり、かつ　安定しやすい。</p>
+<h2 id="実装"><a href="#実装" class="headerlink" title="実装"></a>実装</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> mglearn</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split</span><br></pre></td></tr></tbody></table></figure>
+
+<p>np.random.randは<code>(x, y)</code>のように与えられた次元の0~1の行列を返す。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="hljs-number">50</span>, <span class="hljs-number">1</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y = <span class="hljs-number">3</span> + x * <span class="hljs-number">3</span> + np.random.rand(<span class="hljs-number">50</span>,<span class="hljs-number">1</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>scatterで散布図をかける。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<pre><code><matplotlib.collections.PathCollection at 0x7f3c8be4e668></code></pre><p><img src="output_3_1.png" alt="png"></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># ravelは多次元を一次元データ（ベクトル）にする</span></span><br><span class="line">lin_reg = LinearRegression().fit(x, y.ravel())</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pred_y = lin_reg.predict(x)</span><br><span class="line">plt.plot(x, pred_y)</span><br><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<pre><code><matplotlib.collections.PathCollection at 0x7f3c8c176a90></code></pre><p><img src="output_6_1.png" alt="png"></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># intercept 切片</span></span><br><span class="line"><span class="hljs-comment"># coefficiant 係数</span></span><br><span class="line">lin_reg.intercept_, lin_reg.coef_</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<pre><code>(3.505313728559018, array([2.96289018]))</code></pre><p>SGDRegressorは数値的に微分してモデルを作る確率的勾配降下法。<br>一方LinearRegressionは解析的らしい。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> SGDRegressor</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sgd_reg = SGDRegressor(max_iter=<span class="hljs-number">100</span>, eta0=<span class="hljs-number">0.01</span>).fit(x, y.ravel())</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sgd_reg.intercept_, sgd_reg.coef_</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<pre><code>(array([3.81441589]), array([2.29663001]))</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new_x = np.array([[<span class="hljs-number">0</span>], [<span class="hljs-number">1</span>]])</span><br><span class="line">plt.plot(new_x, sgd_reg.intercept_ + sgd_reg.coef_ * new_x)</span><br><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<pre><code><matplotlib.collections.PathCollection at 0x7f3c8bcd3400></code></pre><p>おおよそ求めることができている。</p>
+<p><img src="output_11_1.png" alt="png"></p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#線形回帰"><span class="toc-number">1.</span> <span class="toc-text">線形回帰</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学習方法"><span class="toc-number">2.</span> <span class="toc-text">学習方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#勾配降下法"><span class="toc-number">3.</span> <span class="toc-text">勾配降下法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#バッチ勾配降下法"><span class="toc-number">3.1.</span> <span class="toc-text">バッチ勾配降下法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#確率的勾配降下法"><span class="toc-number">3.2.</span> <span class="toc-text">確率的勾配降下法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ミニバッチ勾配降下法"><span class="toc-number">3.3.</span> <span class="toc-text">ミニバッチ勾配降下法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実装"><span class="toc-number">4.</span> <span class="toc-text">実装</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

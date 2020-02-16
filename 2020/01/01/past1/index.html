@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PAST1過去問参加記 - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/01/past1/" />
+    <!--③-->
+    <meta property="og:title" content="PAST1過去問参加記" />
+    <!--④-->
+    <meta property="og:description" content="past1の感想とか" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,はじめにPAST1に出ました、以下に各問題の感想・解説などを書いていきます。
+詳細な解説やコードはScrapboxにまとめています。
+
+感想・解説Aisdigitなどで判定します。stoiなどを使う,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/01/past1/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">PAST1過去問参加記</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img83.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            PAST1過去問参加記
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/AtCoder/" rel="tag">AtCoder</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">競技プログラミング</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/01
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p><a href="https://atcoder.jp/contests/past201912-open/tasks" target="_blank" rel="noopener">PAST1</a>に出ました、<br>以下に各問題の感想・解説などを書いていきます。</p>
+<p>詳細な解説やコードは<a href="https://scrapbox.io/ganariya/PAST1" target="_blank" rel="noopener">Scrapbox</a>にまとめています。</p>
+<hr>
+<h2 id="感想・解説"><a href="#感想・解説" class="headerlink" title="感想・解説"></a>感想・解説</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>isdigitなどで判定します。<br>stoiなどを使うと0を含んでいても整数にしてくれるので楽です。</p>
+<p>もしコーディングを自分でやる場合は</p>
+<figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">d = <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i < N; i++){</span><br><span class="line">    d *= <span class="hljs-number">10</span>;</span><br><span class="line">    d += S[i] - <span class="hljs-string">'0'</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>みたいにするといいです。</p>
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>forで判定をします。</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>ソートをして３番めを出力します。</p>
+<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>カウントします。<br>ちょっと実装が面倒というかやりたくない><</p>
+<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>これ難しい。</p>
+<p>実際にコーディングすればいいが、単純に頭が疲れる。</p>
+<p>これ普段競技プログラミングやっている人ならいいけど、初めての人結構大変そうだなぁ･･･</p>
+<p>あと、自分自身にフォローすることが、普通に実装すると発生するので<br>出力時にチェックしよう（2敗）</p>
+<h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><p>カウント構文をします。<br>海外だとtwo-pointersなどと呼ばれているものです。</p>
+<p>sort関数でソートすると楽です。<br>ただ、小文字で判定しないといけないため、<br>transform(s.begin(), s.end(), s.begin(), ::lower)などとすれば簡単に小文字にできます。</p>
+<h3 id="G"><a href="#G" class="headerlink" title="G"></a>G</h3><p>$N$人を$3$グループに分ける問題です。<br>（分けたあとは簡単なので）</p>
+<p>分け方の全探索は２通りあります。</p>
+<p>一通り目は、DFSをすればよいです。<br>DFSをすると、$O(3^N)$で計算できます。</p>
+<p>２つ目は、3進数を使えばいいです。<br>ただ、3進数はそのまま使えないため、4進数を使えばいいです。</p>
+<p>$N$個の要素を3つに分けるならば、$2\times N$個で$2$進数をすればいいです。</p>
+<h3 id="H"><a href="#H" class="headerlink" title="H"></a>H</h3><p>これ一番むずかしい＞＜</p>
+<p>解けません。</p>
+<p>全種類販売だけなら、なんとかなりますが、奇数が出てくるとセグ木でなぐれないので辛い。</p>
+<p>2通り解法があるっぽい。</p>
+<p>まず、多くの人がやっているのが奇数・偶数それぞれに対して</p>
+<ul>
+<li>奇数または偶数番目での、最小値</li>
+<li>奇数または偶数番目での、これまでにセットとして販売した枚数</li>
+</ul>
+<p>とすればよい。</p>
+<p>最小値だけ持っていれば、売れるかどうかを判定できるため、これをチェックすれば良い。</p>
+<p>また<a href="https://qiita.com/mikecat_mixc/items/" target="_blank" rel="noopener">https://qiita.com/mikecat_mixc/items/</a>　さんの解法であったのが<br>先に奇数番目が来るように写像するやり方。<br>これ応用効きそうでいいなぁになる。</p>
+<h3 id="I"><a href="#I" class="headerlink" title="I"></a>I</h3><p>最近ABCで出た問題。</p>
+<p>$N=10$の部品が全部揃うように、いい感じにセットを買い揃える問題。<br>部品のならびはビット演算でできるため</p>
+<p><code>bit[i][j] = i番目までのセットを用いて、商品jの並びを作るような最小コスト</code><br>とすればよい。</p>
+<h3 id="J"><a href="#J" class="headerlink" title="J"></a>J</h3><p>$HW$個のマス目の左下から右下にいどうして、その後右上に移動するときの<br>最小コストを求める問題。</p>
+<p>この問題の難しい点は、左下から右下に移動したときに利用したマスは<br>再利用しても追加コストがかからない点である。</p>
+<p>そこで、全探索をする意識を持って、各マスを中継場所として<br>左下、右下、右上からダイクストラする。</p>
+<p>二回多く数えているため、中継場所のコストだけ引いてあげれば、これらの最小値が答え。</p>
+<h3 id="K"><a href="#K" class="headerlink" title="K"></a>K</h3><p>最小共通祖先かオイラーツアーで解ける。</p>
+<p>最小共通祖先のほうが、直感的そう＞＜（僕がそうなので）</p>
+<h3 id="L"><a href="#L" class="headerlink" title="L"></a>L</h3><p>小さい塔と大きい塔があり、大きい塔は必ず連結成分にしたい。</p>
+<p>ここで、もし小さい塔を利用するなら、小さい塔も連結成分になることがわかる。<br>よって、どの小さい塔を利用するかを全探索する。<br>あとはクラスカル方をする。</p>
+<h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><p>これわからなかった、平均値の最大化は二分探索らしい。</p>
+<p>$\sum B_x / \sum A_x$の最大化をしたいため、この最大値を$p$として二分探索する。</p>
+<p>式変形すると</p>
+<p>$\sum (B_x - A_x \times p) \geq 0$</p>
+<p>となるため、$B_x - A_x \times p$の大きい順から利用するGreedyで、$p$以上になるか調べれば良い。</p>
+<h3 id="N-O"><a href="#N-O" class="headerlink" title="N, O"></a>N, O</h3><p>まだ分かってない、必ず復習する</p>
+<hr>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>最初のほうは、プログラムを作れ　、など普段競技プログラミングやってない人向けなんだなぁって思った</p>
+<p>後半難しいというか、実装がめんどくせ〜〜ってものが多い印象。</p>
+<p>上級が取れなかったので残念＞＜</p>
+<p>（途中で色々とサイト自体の修正をしていたので、途中で書いている口調が変わってしまっている･･･）</p>
+<h2 id="他の人の解説・感想"><a href="#他の人の解説・感想" class="headerlink" title="他の人の解説・感想"></a>他の人の解説・感想</h2><ul>
+<li><a href="http://sigma1113.hatenablog.com/entry/2019/12/31/010739" target="_blank" rel="noopener">http://sigma1113.hatenablog.com/entry/2019/12/31/010739</a></li>
+<li><a href="https://qiita.com/mikecat_mixc/items/e7dcf78904858ab31bb1#m-%E3%81%8A%E3%81%BE%E3%81%8B%E3%81%9B--auto-choice" target="_blank" rel="noopener">https://qiita.com/mikecat_mixc/items/e7dcf78904858ab31bb1#m-%E3%81%8A%E3%81%BE%E3%81%8B%E3%81%9B--auto-choice</a></li>
+<li><a href="https://rsk0315.hatenablog.com/entry/2019/12/29/051900" target="_blank" rel="noopener">https://rsk0315.hatenablog.com/entry/2019/12/29/051900</a></li>
+<li><a href="https://ngtkana.hatenablog.com/entry/2019/12/30/180226" target="_blank" rel="noopener">https://ngtkana.hatenablog.com/entry/2019/12/30/180226</a></li>
+</ul>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#はじめに"><span class="toc-number">1.</span> <span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感想・解説"><span class="toc-number">2.</span> <span class="toc-text">感想・解説</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A"><span class="toc-number">2.1.</span> <span class="toc-text">A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B"><span class="toc-number">2.2.</span> <span class="toc-text">B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">2.3.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D"><span class="toc-number">2.4.</span> <span class="toc-text">D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E"><span class="toc-number">2.5.</span> <span class="toc-text">E</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F"><span class="toc-number">2.6.</span> <span class="toc-text">F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G"><span class="toc-number">2.7.</span> <span class="toc-text">G</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#H"><span class="toc-number">2.8.</span> <span class="toc-text">H</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#I"><span class="toc-number">2.9.</span> <span class="toc-text">I</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#J"><span class="toc-number">2.10.</span> <span class="toc-text">J</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#K"><span class="toc-number">2.11.</span> <span class="toc-text">K</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L"><span class="toc-number">2.12.</span> <span class="toc-text">L</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M"><span class="toc-number">2.13.</span> <span class="toc-text">M</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#N-O"><span class="toc-number">2.14.</span> <span class="toc-text">N, O</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感想"><span class="toc-number">3.</span> <span class="toc-text">感想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#他の人の解説・感想"><span class="toc-number">4.</span> <span class="toc-text">他の人の解説・感想</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

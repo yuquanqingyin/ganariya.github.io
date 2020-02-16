@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>k近傍法をsklearnで試してみる - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/07/k_neighbors/" />
+    <!--③-->
+    <meta property="og:title" content="k近傍法をsklearnで試してみる" />
+    <!--④-->
+    <meta property="og:description" content="ganariya blog" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,動画リンクhttps://www.youtube.com/watch?v=4Vk1UhRDB34&amp;list=PLdG31GUo-My_YlVF8BClMDBaJ0IJyEFjS&amp;index=3&amp;t=,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/07/k_neighbors/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">k近傍法をsklearnで試してみる</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img51.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            k近傍法をsklearnで試してみる
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%8B%95%E7%94%BB%E8%AC%9B%E5%BA%A7/" rel="tag">動画講座</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/" rel="tag">機械学習</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/07
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="動画リンク"><a href="#動画リンク" class="headerlink" title="動画リンク"></a>動画リンク</h2><p><a href="https://www.youtube.com/watch?v=4Vk1UhRDB34&list=PLdG31GUo-My_YlVF8BClMDBaJ0IJyEFjS&index=3&t=0s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4Vk1UhRDB34&list=PLdG31GUo-My_YlVF8BClMDBaJ0IJyEFjS&index=3&t=0s</a></p>
+<hr>
+<h2 id="k近傍法"><a href="#k近傍法" class="headerlink" title="k近傍法"></a>k近傍法</h2><p>k近傍法は、ユークリッド距離などを用いて未知のデータを、いくつか存在するクラスに割り当てるアルゴリズムです。<br>つまり、いわゆる教師あり学習に入ります。</p>
+<p>未知の特徴ベクトル$x$がどの分類クラス$y’$かを予測するために<br>すでに教師あり学習で学んだ$N$個のデータと距離を比較します。<br>そして、一番近い$K$個のラベルを取り出し、そのうち、多数決で$x$のラベルを推測します。</p>
+<p>$K$がある程度小さいほど精度は増しますが、外れ値のようなノイズに左右されやすくなります。<br>また、$K$が大きくなると、平均的には良いですが、境界値などで他のクラスに多く引っ張られるため精度が下がります。<br>適切な$K$を自分で探す必要があります。</p>
+<h2 id="メリット・デメリット"><a href="#メリット・デメリット" class="headerlink" title="メリット・デメリット"></a>メリット・デメリット</h2><ul>
+<li>メリット<ul>
+<li>理解しやすい</li>
+<li>単純だが意外とうまくいく</li>
+</ul>
+</li>
+<li>デメリット<ul>
+<li>計算量が次元の増加にともなってでかくなる</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="実装"><a href="#実装" class="headerlink" title="実装"></a>実装</h2><p>mglearnを先にインストールしておきます。<br>Jupyter Notebookでは<code>!</code>をつけるとコマンドを利用することができます。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install mglearn</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>Requirement already satisfied: mglearn in /opt/conda/lib/python3.7/site-packages (0.1.7)
+Requirement already satisfied: scikit-learn in /opt/conda/lib/python3.7/site-packages (from mglearn) (0.21.3)
+Requirement already satisfied: matplotlib in /opt/conda/lib/python3.7/site-packages (from mglearn) (3.1.1)
+Requirement already satisfied: imageio in /opt/conda/lib/python3.7/site-packages (from mglearn) (2.6.1)
+Requirement already satisfied: pillow in /opt/conda/lib/python3.7/site-packages (from mglearn) (6.2.1)
+Requirement already satisfied: pandas in /opt/conda/lib/python3.7/site-packages (from mglearn) (0.25.3)
+Requirement already satisfied: cycler in /opt/conda/lib/python3.7/site-packages (from mglearn) (0.10.0)
+Requirement already satisfied: numpy in /opt/conda/lib/python3.7/site-packages (from mglearn) (1.17.3)
+Requirement already satisfied: joblib>=0.11 in /opt/conda/lib/python3.7/site-packages (from scikit-learn->mglearn) (0.14.0)
+Requirement already satisfied: scipy>=0.17.0 in /opt/conda/lib/python3.7/site-packages (from scikit-learn->mglearn) (1.3.2)
+Requirement already satisfied: kiwisolver>=1.0.1 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mglearn) (1.1.0)
+Requirement already satisfied: python-dateutil>=2.1 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mglearn) (2.8.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mglearn) (2.4.5)
+Requirement already satisfied: pytz>=2017.2 in /opt/conda/lib/python3.7/site-packages (from pandas->mglearn) (2019.3)
+Requirement already satisfied: six in /opt/conda/lib/python3.7/site-packages (from cycler->mglearn) (1.13.0)
+Requirement already satisfied: setuptools in /opt/conda/lib/python3.7/site-packages (from kiwisolver>=1.0.1->matplotlib->mglearn) (42.0.2.post20191201)</code></pre><p>sklearnのtrain_test_splitは、データを訓練データとテストデータに分割してくれます。<br>パラメータによっては元のデータのバランスを崩さないようにデータを分割してくれます。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split</span><br></pre></td></tr></tbody></table></figure>
+
+<p>irisと呼ばれるsklearnのデータセットを利用します。<br>irisは3種類の花を分類するデータセットです。</p>
+<p>額の大きさなど4つの特徴量が存在し、0,1,2の3クラスに高精度に分類することが目的です。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># mglearnは機械学習の本用に作られたライブラリらしい</span></span><br><span class="line"><span class="hljs-keyword">import</span> mglearn</span><br><span class="line">iris = load_iris()</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(iris.DESCR)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>.. _iris_dataset:
+
+Iris plants dataset
+--------------------
+
+**Data Set Characteristics:**
+
+    :Number of Instances: 150 (50 in each of three classes)
+    :Number of Attributes: 4 numeric, predictive attributes and the class
+    :Attribute Information:
+        - sepal length in cm
+        - sepal width in cm
+        - petal length in cm
+        - petal width in cm
+        - class:
+                - Iris-Setosa
+                - Iris-Versicolour
+                - Iris-Virginica
+
+    :Summary Statistics:
+
+    ============== ==== ==== ======= ===== ====================
+                    Min  Max   Mean    SD   Class Correlation
+    ============== ==== ==== ======= ===== ====================
+    sepal length:   4.3  7.9   5.84   0.83    0.7826
+    sepal width:    2.0  4.4   3.05   0.43   -0.4194
+    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
+    petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)
+    ============== ==== ==== ======= ===== ====================
+
+    :Missing Attribute Values: None
+    :Class Distribution: 33.3% for each of 3 classes.
+    :Creator: R.A. Fisher
+    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+    :Date: July, 1988
+
+The famous Iris database, first used by Sir R.A. Fisher. The dataset is taken
+from Fisher's paper. Note that it's the same as in R, but not as in the UCI
+Machine Learning Repository, which has two wrong data points.
+
+This is perhaps the best known database to be found in the
+pattern recognition literature.  Fisher's paper is a classic in the field and
+is referenced frequently to this day.  (See Duda & Hart, for example.)  The
+data set contains 3 classes of 50 instances each, where each class refers to a
+type of iris plant.  One class is linearly separable from the other 2; the
+latter are NOT linearly separable from each other.
+
+.. topic:: References
+
+   - Fisher, R.A. "The use of multiple measurements in taxonomic problems"
+     Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to
+     Mathematical Statistics" (John Wiley, NY, 1950).
+   - Duda, R.O., & Hart, P.E. (1973) Pattern Classification and Scene Analysis.
+     (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+   - Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+     Structure and Classification Rule for Recognition in Partially Exposed
+     Environments".  IEEE Transactions on Pattern Analysis and Machine
+     Intelligence, Vol. PAMI-2, No. 1, 67-71.
+   - Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE Transactions
+     on Information Theory, May 1972, 431-433.
+   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al"s AUTOCLASS II
+     conceptual clustering system finds 3 classes in the data.
+   - Many, many more ...</code></pre><p>150個のデータと4次元の特徴量が存在します。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(iris.data.shape)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>(150, 4)</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(iris.data[<span class="hljs-number">0</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>[5.1 3.5 1.4 0.2]</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(iris.target_names)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>['setosa' 'versicolor' 'virginica']</code></pre><p>targetに分類が格納されています。<br>$X, Y$を分類するのが通例のようです。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(iris.target.shape, iris.target)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>(150,) [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2]</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = iris.data</span><br><span class="line">Y = iris.target</span><br></pre></td></tr></tbody></table></figure>
+
+<p>pandasのcolumnsに何も設定しないと、通常0,1,..のように連番が振られますが<br>文字列を指定できます。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(X, columns=iris.feature_names).head()</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># random_state = 0とすることで、シードが固定値になる</span></span><br><span class="line">X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=<span class="hljs-number">0</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># K-近傍法</span></span><br><span class="line"><span class="hljs-keyword">from</span> sklearn.neighbors <span class="hljs-keyword">import</span> KNeighborsClassifier</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list_k = []</span><br><span class="line">list_score = []</span><br></pre></td></tr></tbody></table></figure>
+
+<p>sklearn.neighborsのKNeighborsClassifierを利用して<br>訓練を行います。</p>
+<p>fitは多くのライブラリで共通の訓練メソッド<br>そして、predictは予測メソッドです。</p>
+<p>scoreでテストデータがどれくらい正しいかを計算することができます。<br>ここで大切なのが、テストデータで正しいかを判定するということです。（決して訓練データで行ってはいけない）</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">31</span>):</span><br><span class="line">    knc = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line">    knc.fit(X_train, Y_train)</span><br><span class="line">    </span><br><span class="line">    Y_pred = knc.predict(X_test)</span><br><span class="line">    print(Y_pred)</span><br><span class="line">    </span><br><span class="line">    score = knc.score(X_test, Y_test)</span><br><span class="line">    print(<span class="hljs-string">"[%d] score: {:.2f}"</span>.format(score) % k)</span><br><span class="line">    </span><br><span class="line">    list_k.append(k)</span><br><span class="line">    list_score.append(score)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[1] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[2] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[3] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[4] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[5] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[6] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[7] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[8] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[9] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[10] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[11] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[12] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[13] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[14] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[15] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[16] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[17] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[18] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[19] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[20] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[21] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[22] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[23] score: 0.97
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 1 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[24] score: 0.95
+[2 1 0 2 0 2 0 1 2 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[25] score: 0.95
+[2 1 0 2 0 2 0 1 2 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[26] score: 0.95
+[2 1 0 2 0 2 0 1 2 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[27] score: 0.95
+[2 1 0 2 0 2 0 1 2 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 1 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[28] score: 0.92
+[2 1 0 2 0 2 0 2 2 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 1 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[29] score: 0.89
+[2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 1 0 0 1 1 0 2 1 0 2 2 1 0
+ 2]
+[30] score: 0.95</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.ylim(<span class="hljs-number">0.9</span>, <span class="hljs-number">1.0</span>)</span><br><span class="line">plt.xlabel(<span class="hljs-string">"n_neibors"</span>)</span><br><span class="line">plt.ylabel(<span class="hljs-string">"score"</span>)</span><br><span class="line">plt.plot(list_k, list_score)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<pre><code>[<matplotlib.lines.Line2D at 0x7f00879039e8>]</code></pre><p><img src="output_14_1.png" alt="png"></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> pandas.plotting <span class="hljs-keyword">import</span> scatter_matrix</span><br></pre></td></tr></tbody></table></figure>
+
+<p>scatter_matrixと呼ばれる図のようです。</p>
+<p>複数の次元（今回の場合は４つの特徴量なので４）をそれぞれ組合せてどのように散布図が描かれるかを示します。</p>
+<p>この図を見ると、ほとんどの2つの特徴量の組合せで大体は分類できそうということが分かります。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iris_dataframe = pd.DataFrame(X_train, columns=iris.feature_names)</span><br><span class="line">scatter_matrix(iris_dataframe, c=Y_train, figsize=(<span class="hljs-number">15</span>, <span class="hljs-number">15</span>), marker=<span class="hljs-string">'o'</span>, hist_kwds={<span class="hljs-string">'bins'</span>: <span class="hljs-number">20</span>}, s=<span class="hljs-number">60</span>, alpha=<span class="hljs-number">.8</span>, cmap=mglearn.cm3 )</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<pre><code>array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f0087bc87f0>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f0084b11400>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f0084afec18>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f0084aafd68>],
+       [<matplotlib.axes._subplots.AxesSubplot object at 0x7f0084a5ceb8>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f0084a1b048>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f008878dcf8>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f0084b179b0>],
+       [<matplotlib.axes._subplots.AxesSubplot object at 0x7f0084b17c18>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f00878fae80>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f00849ae748>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f008495fcf8>],
+       [<matplotlib.axes._subplots.AxesSubplot object at 0x7f008491d2e8>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f00848cc898>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f00848ffe48>,
+        <matplotlib.axes._subplots.AxesSubplot object at 0x7f00848b9438>]],
+      dtype=object)</code></pre><p><img src="output_16_1.png" alt="png"></p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>KNNはシンプルながら、意外とうまく性能が出そう、<br>ただ次元数が多いと実行時間かかりそうだなぁという印象がある。</p>
+<p>今回はブログを多く参考にさせてもらったため、<br>今度は公式ドキュメントを元に自分で書いていきたい。</p>
+<h2 id="参考サイト"><a href="#参考サイト" class="headerlink" title="参考サイト"></a>参考サイト</h2><ul>
+<li><a href="https://blog.amedama.jp/entry/2017/03/18/140238" target="_blank" rel="noopener">Python: k 近傍法を実装してみる</a></li>
+<li><a href="https://analytics-note.xyz/programming/pandas-scatter-matrix/" target="_blank" rel="noopener">pandasで散布図行列を書く</a></li>
+</ul>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#動画リンク"><span class="toc-number">1.</span> <span class="toc-text">動画リンク</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k近傍法"><span class="toc-number">2.</span> <span class="toc-text">k近傍法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#メリット・デメリット"><span class="toc-number">3.</span> <span class="toc-text">メリット・デメリット</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実装"><span class="toc-number">4.</span> <span class="toc-text">実装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感想"><span class="toc-number">5.</span> <span class="toc-text">感想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考サイト"><span class="toc-number">6.</span> <span class="toc-text">参考サイト</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

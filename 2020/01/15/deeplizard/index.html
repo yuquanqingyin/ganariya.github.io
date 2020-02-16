@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DeepLizardQ学習 - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/15/deeplizard/" />
+    <!--③-->
+    <meta property="og:title" content="DeepLizardQ学習" />
+    <!--④-->
+    <meta property="og:description" content="ganariya blog" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,Q学習行動価値関数で状態$s$において取るべき行動$a$を計算する方法。episodeごとにQ値のテーブルを更新して、np.argmaxを取得して移動する。
+ソースコード1!pip install ,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/15/deeplizard/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">DeepLizardQ学習</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img45.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            DeepLizardQ学習
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/DeepLizard/" rel="tag">DeepLizard</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%8B%95%E7%94%BB%E8%AC%9B%E5%BA%A7/" rel="tag">動画講座</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/15
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="Q学習"><a href="#Q学習" class="headerlink" title="Q学習"></a>Q学習</h2><p>行動価値関数で状態$s$において取るべき行動$a$を計算する方法。<br>episodeごとにQ値のテーブルを更新して、np.argmaxを取得して移動する。</p>
+<h2 id="ソースコード"><a href="#ソースコード" class="headerlink" title="ソースコード"></a>ソースコード</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install gym</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>Collecting gym
+[?25l  Downloading https://files.pythonhosted.org/packages/1d/85/a7a462d7796f097027d60f9a62b4e17a0a94dcf12ac2a9f9a913333b11a6/gym-0.15.4.tar.gz (1.6MB)
+[K     |ââââââââââââââââââââââââââââââââ| 1.6MB 1.9MB/s eta 0:00:01     |âââââââââââââââ                 | 696kB 1.9MB/s eta 0:00:01
+[?25hRequirement already satisfied: scipy in /opt/conda/lib/python3.7/site-packages (from gym) (1.3.2)
+Requirement already satisfied: numpy>=1.10.4 in /opt/conda/lib/python3.7/site-packages (from gym) (1.17.3)
+Requirement already satisfied: six in /opt/conda/lib/python3.7/site-packages (from gym) (1.13.0)
+Collecting pyglet<=1.3.2,>=1.2.0
+[?25l  Downloading https://files.pythonhosted.org/packages/1c/fc/dad5eaaab68f0c21e2f906a94ddb98175662cc5a654eee404d59554ce0fa/pyglet-1.3.2-py2.py3-none-any.whl (1.0MB)
+[K     |ââââââââââââââââââââââââââââââââ| 1.0MB 29.2MB/s eta 0:00:01
+[?25hRequirement already satisfied: cloudpickle~=1.2.0 in /opt/conda/lib/python3.7/site-packages (from gym) (1.2.2)
+Collecting opencv-python
+[?25l  Downloading https://files.pythonhosted.org/packages/d8/38/60de02a4c9013b14478a3f681a62e003c7489d207160a4d7df8705a682e7/opencv_python-4.1.2.30-cp37-cp37m-manylinux1_x86_64.whl (28.3MB)
+[K     |ââââââââââââââââââââââââââââââââ| 28.3MB 36.2MB/s eta 0:00:01     |ââââââââââââââââ                | 13.8MB 38.0MB/s eta 0:00:01     |âââââââââââââââââââââââ         | 19.9MB 36.2MB/s eta 0:00:01
+[?25hCollecting future
+[?25l  Downloading https://files.pythonhosted.org/packages/45/0b/38b06fd9b92dc2b68d58b75f900e97884c45bedd2ff83203d933cf5851c9/future-0.18.2.tar.gz (829kB)
+[K     |ââââââââââââââââââââââââââââââââ| 829kB 12.2MB/s eta 0:00:01
+[?25hBuilding wheels for collected packages: gym, future
+  Building wheel for gym (setup.py) ... [?25ldone
+[?25h  Created wheel for gym: filename=gym-0.15.4-cp37-none-any.whl size=1648485 sha256=bc8d1a069590fcec0afed101d3e0c289d5c40d6eff4b14fb5ef57029717912fa
+  Stored in directory: /home/jovyan/.cache/pip/wheels/e9/26/9b/8a1a6599a91077a938ac4348cc3d3ac84bfab0dbfddeb4c6e7
+  Building wheel for future (setup.py) ... [?25ldone
+[?25h  Created wheel for future: filename=future-0.18.2-cp37-none-any.whl size=491057 sha256=2400043f630cc437e24bf654c13b047ecffe61323d1606e61b51cdef0c2e8eb8
+  Stored in directory: /home/jovyan/.cache/pip/wheels/8b/99/a0/81daf51dcd359a9377b110a8a886b3895921802d2fc1b2397e
+Successfully built gym future
+Installing collected packages: future, pyglet, opencv-python, gym
+Successfully installed future-0.18.2 gym-0.15.4 opencv-python-4.1.2.30 pyglet-1.3.2</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> gym</span><br><span class="line"><span class="hljs-keyword">import</span> random</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">from</span> IPython.display <span class="hljs-keyword">import</span> clear_output</span><br></pre></td></tr></tbody></table></figure>
+
+<p>gymの環境を読み込む</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env = gym.make(<span class="hljs-string">"FrozenLake-v0"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(env.action_space)</span><br><span class="line">print(env.action_space.n)</span><br><span class="line">print(env.observation_space)</span><br><span class="line">print(env.observation_space.n)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>Discrete(4)
+4
+Discrete(16)
+16</code></pre><p>Qテーブルを用意する。<br>状態数　＊　アクション数になる。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">action_space_size = env.action_space.n</span><br><span class="line">state_space_size = env.observation_space.n</span><br><span class="line">q_table = np.zeros((state_space_size, action_space_size))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(q_table)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>[[0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]]</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">num_episodes = <span class="hljs-number">10000</span></span><br><span class="line">max_steps_per_episode = <span class="hljs-number">100</span></span><br><span class="line"></span><br><span class="line">learning_rate = <span class="hljs-number">0.1</span></span><br><span class="line">discount_rate = <span class="hljs-number">0.99</span></span><br><span class="line"></span><br><span class="line">exploration_rate = <span class="hljs-number">1</span></span><br><span class="line">max_exploration_rate = <span class="hljs-number">1</span></span><br><span class="line">min_exploration_rate = <span class="hljs-number">0.01</span></span><br><span class="line">exploration_decay_late=<span class="hljs-number">0.001</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>エピソードの回数だけ、エージェントを動かす。<br>状態は環境をリセットして受け取り、どの状態から行動だけをコーディングする。<br>（内部の操作などはgymがやってくれる。）</p>
+<p>新しい状態へはenv.step(アクション)で<br>新しい状態, 報酬, 終わったか？, 情報を返してくれる。</p>
+<p>Q値のテーブルは<br>報酬に加えて、これまでのQ値のテーブルのうち次の状態$s’$から<br><code>q_table[s', :]</code>、つまり次の状態$s’$で取れる行動のうち、最大の値をもつもののインデックスをnp.argmaxで取り出す。<br>このように状態や行動が数字で表されているため、Numpyで操作しやすいので嬉しい。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">rewards_all_episodes = []</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> episode <span class="hljs-keyword">in</span> range(num_episodes):</span><br><span class="line">    state = env.reset()</span><br><span class="line">    done = <span class="hljs-literal">False</span></span><br><span class="line">    rewards = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> range(max_steps_per_episode):</span><br><span class="line">        eps = random.uniform(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">if</span> eps > exploration_rate:</span><br><span class="line">            action = np.argmax(q_table[state, :])</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-comment"># envă§ăŠăłăă ă˘ăŻăˇă§ăł</span></span><br><span class="line">            action = env.action_space.sample()</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-comment"># state 0~15</span></span><br><span class="line">        <span class="hljs-comment"># action 0~3 ćˇťĺ­ăŽăăăŤć°ĺ­ăŤăŞăŁăŚăă</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-comment"># envă§stepăă¨ăŽčĄĺăăă</span></span><br><span class="line">        new_state, reward, done, info= env.step(action)</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-comment"># info['prob'] = ?</span></span><br><span class="line">        q_table[state, action] += learning_rate * (reward + discount_rate * np.max(q_table[new_state, :]) - q_table[state, action])</span><br><span class="line">        state = new_state</span><br><span class="line">        rewards += reward</span><br><span class="line">        rewards += <span class="hljs-number">-0.001</span></span><br><span class="line">        <span class="hljs-keyword">if</span> done:</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">    </span><br><span class="line">    exploration_rate = min_exploration_rate + (max_exploration_rate - min_exploration_rate) * np.exp(-exploration_decay_late * episode)</span><br><span class="line">    rewards_all_episodes.append(rewards)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(rewards_all_episodes[<span class="hljs-number">9900</span>:])</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>[-0.03200000000000002, 0.989, 0.939, 0.9229999999999999, 0.971, -0.011000000000000003, -0.05200000000000004, -0.025000000000000015, 0.972, -0.10000000000000007, 0.8999999999999999, 0.982, -0.01900000000000001, 0.961, 0.988, 0.992, 0.986, -0.02900000000000002, -0.06100000000000005, -0.014000000000000005, -0.01800000000000001, 0.978, -0.08300000000000006, -0.10000000000000007, 0.9319999999999999, 0.978, -0.08700000000000006, 0.948, -0.06500000000000004, 0.968, -0.10000000000000007, 0.972, 0.9199999999999999, 0.968, 0.958, 0.985, 0.982, -0.017000000000000008, 0.953, -0.10000000000000007, 0.955, 0.964, -0.015000000000000006, 0.964, -0.10000000000000007, 0.972, 0.9169999999999999, 0.971, 0.975, 0.981, 0.987, 0.98, -0.06700000000000005, 0.989, 0.989, 0.969, -0.02000000000000001, -0.011000000000000003, 0.953, 0.9329999999999999, 0.971, -0.10000000000000007, -0.10000000000000007, 0.953, 0.972, -0.005, -0.04100000000000003, 0.951, -0.01800000000000001, 0.9069999999999999, 0.95, -0.02100000000000001, -0.014000000000000005, -0.10000000000000007, 0.95, 0.9249999999999999, 0.973, -0.012000000000000004, 0.9359999999999999, 0.965, 0.954, 0.962, -0.10000000000000007, -0.10000000000000007, -0.10000000000000007, 0.986, -0.012000000000000004, 0.954, -0.10000000000000007, 0.966, 0.974, -0.017000000000000008, 0.9109999999999999, 0.986, 0.947, 0.985, 0.957, 0.9289999999999999, 0.8999999999999999, 0.978]</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rewards_per_thousand_episodes = np.split(np.array(rewards_all_episodes), num_episodes/<span class="hljs-number">1000</span>)</span><br><span class="line">count = <span class="hljs-number">1000</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="hljs-string">"********Average reward per thousand episodes********\n"</span>)</span><br><span class="line"><span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> rewards_per_thousand_episodes:</span><br><span class="line">    print(count, <span class="hljs-string">": "</span>, str(sum(r) / <span class="hljs-number">1000</span>))</span><br><span class="line">    count += <span class="hljs-number">1000</span></span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>********Average reward per thousand episodes********
+
+1000 :  0.03192799999999999
+2000 :  0.17089500000000005
+3000 :  0.35130999999999996
+4000 :  0.5306420000000002
+5000 :  0.5932989999999998
+6000 :  0.6081720000000004
+7000 :  0.6104729999999994
+8000 :  0.65824
+9000 :  0.5929439999999996
+10000 :  0.6391379999999993</code></pre><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">SFFF</span></span><br><span class="line"><span class="hljs-string">FHFH</span></span><br><span class="line"><span class="hljs-string">FFFH</span></span><br><span class="line"><span class="hljs-string">HFFG</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-comment">## left down right up</span></span><br><span class="line">print(<span class="hljs-string">"\n\n********Q-table********\n"</span>)</span><br><span class="line">print(q_table)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<pre><code>********Q-table********
+
+[[0.50860836 0.50433391 0.49361183 0.50622988]
+ [0.29865329 0.33890008 0.37558601 0.47523278]
+ [0.38509131 0.39300558 0.38158991 0.45651672]
+ [0.24772817 0.24170661 0.30553236 0.44594153]
+ [0.53690444 0.40922313 0.31705662 0.31266024]
+ [0.         0.         0.         0.        ]
+ [0.46853418 0.13698248 0.18588531 0.09231742]
+ [0.         0.         0.         0.        ]
+ [0.21548225 0.47255957 0.32832391 0.60171063]
+ [0.45491031 0.66551718 0.4782614  0.45231346]
+ [0.6499094  0.31232745 0.31200804 0.33453915]
+ [0.         0.         0.         0.        ]
+ [0.         0.         0.         0.        ]
+ [0.42402415 0.41175286 0.75670931 0.52559385]
+ [0.72822262 0.86196169 0.78472814 0.74863557]
+ [0.         0.         0.         0.        ]]</code></pre><p>実行をする際はrenderで描画できる。<br>このとき、IPythonのclear_output(wait=True)を使うと<br>何個も画像を出すのではなく更新しながら描画できる。</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> episode <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):</span><br><span class="line">    state = env.reset()</span><br><span class="line">    print(<span class="hljs-string">"****EPISODE: "</span>, episode + <span class="hljs-number">1</span>, <span class="hljs-string">"****\n\n"</span>)</span><br><span class="line">    time.sleep(<span class="hljs-number">3</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> range(max_steps_per_episode):</span><br><span class="line">        clear_output(wait=<span class="hljs-literal">True</span>)</span><br><span class="line">        env.render()</span><br><span class="line">        time.sleep(<span class="hljs-number">1</span>)</span><br><span class="line">        </span><br><span class="line">        action = np.argmax(q_table[state,  :])</span><br><span class="line">        new_state, reward, done, info = env.step(action)</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">if</span> done:</span><br><span class="line">            clear_output(wait=<span class="hljs-literal">True</span>)</span><br><span class="line">            env.render()</span><br><span class="line">            <span class="hljs-keyword">if</span> reward == <span class="hljs-number">1</span>:</span><br><span class="line">                print(<span class="hljs-string">"You Win!"</span>)</span><br><span class="line">                time.sleep(<span class="hljs-number">3</span>)</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">                print(<span class="hljs-string">"You Lose..."</span>)</span><br><span class="line">                time.sleep(<span class="hljs-number">3</span>)</span><br><span class="line">            clear_output(wait=<span class="hljs-literal">True</span>)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">        state = new_state</span><br></pre></td></tr></tbody></table></figure>
+
+
+<pre><code>[41mS[0mFFF
+FHFH
+FFFH
+HFFG</code></pre><p>render can render the state in the game state.<br>and we program about q_table and in the all inside state can be handled by gym.<br>so we can use easiliy.</p>
+<p>clear_output can erase the screen</p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Q学習"><span class="toc-number">1.</span> <span class="toc-text">Q学習</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ソースコード"><span class="toc-number">2.</span> <span class="toc-text">ソースコード</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

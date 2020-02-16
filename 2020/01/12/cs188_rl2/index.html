@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CS188 09/27 RL2 - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/12/cs188_rl2/" />
+    <!--③-->
+    <meta property="og:title" content="CS188 09/27 RL2" />
+    <!--④-->
+    <meta property="og:description" content="AI" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,リンクhttps://inst.eecs.berkeley.edu/~cs188/fa18/https://inst.eecs.berkeley.edu/~cs188/fa18/assets/sli,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/12/cs188_rl2/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">CS188 09/27 RL2</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img9.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            CS188 09/27 RL2
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CS188/" rel="tag">CS188</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/12
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="リンク"><a href="#リンク" class="headerlink" title="リンク"></a>リンク</h2><p><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/</a><br><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec11/FA18_cs188_lecture11_reinforcement_learning_II_1pp.pdf" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec11/FA18_cs188_lecture11_reinforcement_learning_II_1pp.pdf</a><br><a href="https://www.youtube.com/watch?v=XafrqwHfBKE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=XafrqwHfBKE</a></p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h2 id="Model-Free"><a href="#Model-Free" class="headerlink" title="Model Free"></a>Model Free</h2><p>前回の復習である．<br>モデルフリーは，モデルをすべて作るのではなくオンタイムにモデルを修正していく．</p>
+<p>毎回の試行で$R(s, a, s’, r)$を得て</p>
+<p>$Q(s, a) = r + \gamma max_{a’}Q(s’, a’)$というサンプル（毎回の試行による値）を用いて</p>
+<p>$Q(s, a) \leftarrow (1-\alpha)Q(s, a) + \alpha[r + \gamma max_{a’}(s’, a’)]$として毎回更新できる．</p>
+<h2 id="Exploration-Functions"><a href="#Exploration-Functions" class="headerlink" title="Exploration Functions"></a>Exploration Functions</h2><p>より効率良くQ学習を行うために，探索を積極的に行うようにする．<br>まず，$\alpha$は後半ほど小さくするようにする．これによって，これまでの経験を活かすようになる．</p>
+<p>ここで，より経験してないところを探索するように<br>utilityを$u$，これまでの訪問回数を$n$，定数を$k$として</p>
+<p>$f(u, n) = u + k/(n + 1)$とする.</p>
+<p>この$f$がどれぐらい訪問したいか？を表す．<br>訪問回数がすくないところは，$k/(n+1)$が大きいため，積極的に訪問する．<br>そして，訪問回数$n$が増えるともともとの$n$に収束する．</p>
+<p>これを用いてQ学習を修正すると</p>
+<p>$Q(s, a) = \alpha R(s, a, s’) + \gamma max_{a’}f(Q(s’, a’), N(s’, a’))$</p>
+<p>ここで$N(s’, a’)$はどれくらい状態$s$で行動$a$を行ったか？である．<br>これによって，行ってない状態での行動を積極的に行うようになり，収束が早くなる．</p>
+<h2 id="Approximately"><a href="#Approximately" class="headerlink" title="Approximately"></a>Approximately</h2><p>ここまでは各状態ごとに計算していた．</p>
+<p>しかし，現実の問題は状態が限りなくある．<br>また，人間も状況ごとに対応しておらず，何かしら<code>パターン</code>などを学習している．</p>
+<p>よって，状況の良さを近似することでより収束を早く，一般化を行う（過学習のイメージ）．</p>
+<h2 id="Feature-Based-Learning"><a href="#Feature-Based-Learning" class="headerlink" title="Feature Based Learning"></a>Feature Based Learning</h2><p>Featuresは，状態$s$を実数値に変える関数．</p>
+<p>例えばパックマンなら，どれくらいゴーストが近いか？どのくらいアイテムまで近いか？などを状態$s$から計算し<br>その$s$を特徴（ゴーストが近いか？）ごとに実数にして行動$a$を計算するためのQ値に利用する．</p>
+<h2 id="Linear-Value-Functions"><a href="#Linear-Value-Functions" class="headerlink" title="Linear Value Functions"></a>Linear Value Functions</h2><p>Featureを利用する．</p>
+<p>$Q(s, a) = w_1 f_1(s, a) + w_2 f_2(s, a) + … + w_n f_n(s, a)$</p>
+<p>ここで，$n$は特徴量の数．例えばパックマンのゴーストの近さ，アイテムまでの近さなら$n=2$</p>
+<p>このように状態$s$から行動$a$を行うとした時，この$s$から行動$a$を取ったときの，各特徴量ごとに重みをかけた線形和を求めてQ値とする．</p>
+<p>以下のように計算する．</p>
+<p>$diff = [r + \gamma max_{a’}Q(s’, a’)] - Q(s, a)$<br>つまり今回のサンプリングで分かった値-これまでの推定値．</p>
+<p>また，</p>
+<p>$Q(s, a) = Q(s, a) + \alpha [diff]$として更新し<br>各重みは</p>
+<p>$w_i = w_i + \alpha [diff] f_i(s, a)$</p>
+<p>として計算する．</p>
+<p>なにをやっているかを説明する．<br>diffは今回のサンプリング（試行）でどれくらい良いか？を表している．<br>つまり，今回の試行が10で，もともとQ(s,a)=5なら，さらに５だけ良くなったということを表している．</p>
+<p>そして，もし結果がよくなれば重みにもそれは対応してほしい．<br>よって，重みにdiffを足し，また$f_i(s, a)$を計算して今回の行動で$i$番目の特徴量はどれくらい寄与したか？で重みを更新する．</p>
+<p>これによって，意味のある重みはどんどん大きくなり，あまり意味のないものは消えていく．</p>
+<p>これは，最小二乗法の式に実はなっている．</p>
+<p>$Error(w) = (y - \sum_k w_k f_k (x))^2 / 2$</p>
+<p>という重みに関する損失関数を考える．<br>$x$は入力で$y$は正しい値である．</p>
+<p>今回のdiff式では$y$が実際にサンプリング値である．（環境から得られている時点である程度正しいため）</p>
+<p>そして，これを偏微分してその傾きの負の方向にすすめると誤差が小さくなる．</p>
+<p>よって，これによって，どんどん誤差が小さくなっていく．</p>
+<p>よって，</p>
+<p>$w_i = w_i + \alpha[r + \gamma max_{a’}Q(s’, a’) - Q(s, a)] f_i(s, a)$</p>
+<p>を重みは計算しており，最小二乗法の微分から重みを修正していた．</p>
+<p>これによって，高速にQが求まるらしい．</p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#リンク"><span class="toc-number">1.</span> <span class="toc-text">リンク</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Model-Free"><span class="toc-number">3.</span> <span class="toc-text">Model Free</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploration-Functions"><span class="toc-number">4.</span> <span class="toc-text">Exploration Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Approximately"><span class="toc-number">5.</span> <span class="toc-text">Approximately</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-Based-Learning"><span class="toc-number">6.</span> <span class="toc-text">Feature Based Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-Value-Functions"><span class="toc-number">7.</span> <span class="toc-text">Linear Value Functions</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

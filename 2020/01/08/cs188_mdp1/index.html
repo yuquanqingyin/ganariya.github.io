@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CS188 09/18 MDP1 - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/08/cs188_mdp1/" />
+    <!--③-->
+    <meta property="og:title" content="CS188 09/18 MDP1" />
+    <!--④-->
+    <meta property="og:description" content="ganariya blog" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,リンクhttps://www.youtube.com/watch?v=4LW3H_Jinr4https://inst.eecs.berkeley.edu/~cs188/fa18/https://in,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/08/cs188_mdp1/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">CS188 09/18 MDP1</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img31.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            CS188 09/18 MDP1
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CS188/" rel="tag">CS188</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%8B%95%E7%94%BB%E8%AC%9B%E5%BA%A7/" rel="tag">動画講座</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/08
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="リンク"><a href="#リンク" class="headerlink" title="リンク"></a>リンク</h2><p><a href="https://www.youtube.com/watch?v=4LW3H_Jinr4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4LW3H_Jinr4</a><br><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/</a><br><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec8/FA18_cs188_lecture8_MDPs_I_1pp.pdf" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec8/FA18_cs188_lecture8_MDPs_I_1pp.pdf</a></p>
+<h2 id="画像"><a href="#画像" class="headerlink" title="画像"></a>画像</h2><p><img src="IMG_0360.jpg" alt><br><img src="IMG_0361.jpg" alt><br><img src="IMG_0362.jpg" alt><br><img src="IMG_0363.jpg" alt><br><img src="IMG_0364.jpg" alt><br><img src="IMG_0365.jpg" alt></p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h2 id="非決定的探索"><a href="#非決定的探索" class="headerlink" title="非決定的探索"></a>非決定的探索</h2><p>これまで扱った探索は、決定的であり、思った行動が必ず取れていた。<br>しかし、現実は思った行動が失敗したり、ロボットは動かないこともある。</p>
+<p>よって、確率的に探索を行う、非決定的探索を扱う。</p>
+<h2 id="グリッド"><a href="#グリッド" class="headerlink" title="グリッド"></a>グリッド</h2><p>グリッド状でロボットが動くことを考える。<br>ロボットは毎回の移動でliving reward、そしてゴールかpitで+1, -1のrewardを貰う。</p>
+<h2 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h2><p>ロボットはActionを各状態にそって、取ることができる。<br>しかし、必ず重い道理には行かず</p>
+<p>上に行きたい！　としても　右に動くこともある。<br>これが非決定的である。</p>
+<h2 id="MDPの定義"><a href="#MDPの定義" class="headerlink" title="MDPの定義"></a>MDPの定義</h2><ul>
+<li>state $s \in S$</li>
+<li>actions $a \in A$</li>
+<li>transition function $T(s, a, s’)$<ul>
+<li>状態sから行動aを取る！と決めたあと、状態s’に動く確率</li>
+<li>必ずs’に行くわけではないため</li>
+<li>つまり$P(s’ | s, a)$である</li>
+</ul>
+</li>
+<li>reward function $R(s, a, s’)$<ul>
+<li>たまにR(s’), R(s)と書いたりする</li>
+</ul>
+</li>
+</ul>
+<h2 id="マルコフ"><a href="#マルコフ" class="headerlink" title="マルコフ"></a>マルコフ</h2><p>マルコフは有名な人。</p>
+<p>言っていることは、今これから起こることは昔に依存しない！ということ。</p>
+<p>$P(S_{t+1} = s’ | S_t = s_t, S_{t-1}=s_{t-1}…)$<br>$= P(S_{t+1}=s’)$<br>となる。</p>
+<p>過去に依存しない。</p>
+<h2 id="Policy"><a href="#Policy" class="headerlink" title="Policy"></a>Policy</h2><p>決定的ならば、探索の深さ内なら（すべて探索すると計算量がひどいため）<br>自由に行動できる。</p>
+<p>しかし、非決定的のため、Policy（方針）に従って行動することにする。</p>
+<p>$policy \ \pi^{*}: S \to A$</p>
+<p>policyは上記のように$\pi$を用いて表され、状態集合$S$から、行動への写像を行う関数である。</p>
+<p>最適なPolicyはexpected rewardが最大であり、そのようなPolicyには*をつけて表す。<br>各状態によって、取るべき行動がPolicyが定まることで一意に決まる。</p>
+<h2 id="MDP-Tree"><a href="#MDP-Tree" class="headerlink" title="MDP Tree"></a>MDP Tree</h2><p>MDPをわかりやすく表すTree.<br>詳しくは画像参照。</p>
+<p>現在の状態$s$では、複数の行動$a$を取ることができる。<br>ここで、取った状態を$q = (s, a)$とする。（つまり行動$a$を決めたとき）<br>しかし、行動$a$を取るとしても行き先の状態$s’$は固定ではない。ミスをしたりするからである。<br>よって、その遷移を$T(s, a, s’)$と表す。</p>
+<p>画像では丸がq-state、三角が状態である。</p>
+<h2 id="Discounting"><a href="#Discounting" class="headerlink" title="Discounting"></a>Discounting</h2><p>できる限り今の報酬を大きい影響力を持たせるために（遠い未来は確実性がないため）<br>遠い未来には割引率$\gamma$を累乗する。<br>このガンマは、現実世界に適用しており、数学的に扱いやすい。</p>
+<h2 id="Optimal-Quantities-最適量"><a href="#Optimal-Quantities-最適量" class="headerlink" title="Optimal Quantities(最適量)"></a>Optimal Quantities(最適量)</h2><p>MDPによる行動を決めるために必要な変数を記す。</p>
+<ul>
+<li>$V^{*}(s)$<ul>
+<li>状態$s$から最適な行動$a$を選ぶことで得られる最大のreward, utility</li>
+</ul>
+</li>
+<li>$Q^{*}(s, a)$<ul>
+<li>状態$s$から行動$a$を行うと決めたあとで、最適な行動をしたときに得られる最大の期待値reward, utility</li>
+</ul>
+</li>
+<li>$\pi^{*}(s)$<ul>
+<li>sで行うべき行動を返す関数</li>
+</ul>
+</li>
+</ul>
+<h2 id="Value-of-States"><a href="#Value-of-States" class="headerlink" title="Value of States"></a>Value of States</h2><p>各状態のValueを計算する。<br>このValueを利用して、Policyが定まるらしい</p>
+<p>$V^{*}(s) = \max_{a} Q(s, a)$</p>
+<p>状態sの価値は、sから行動aを選んで得られる最大のq-stateの価値である。</p>
+<p>$Q^{*}(s, a) = \sum_{s’} T(s, a, s’)[R(s, a, s’) + \gamma V^{*}(s’)]$</p>
+<p>q-stateの価値は、行動aを行って確率的にs’にいくため、その遷移確率と価値をかけて期待値を求める。<br>また、内部の価値はこのT(s, a, s’)で得られるliving rewardと 割り引かれた状態$s’$の価値の和になる。</p>
+<p>この２つの式をくっつけることができる。</p>
+<h2 id="Time-Limited-Value"><a href="#Time-Limited-Value" class="headerlink" title="Time Limited Value"></a>Time Limited Value</h2><p>このVの計算が永遠に木が続いて計算できないことがある。</p>
+<p>そこで、深さ$k$を定めて、そのときの最大の価値を求める。<br>これによって、計算量が改善される。</p>
+<p>$V_k(s)$は深さ$k$での最適なmaxを考える。</p>
+<p>これを求めるには以下の手順を踏む。</p>
+<ol>
+<li>$V_0(s)$をまず0にする</li>
+<li>$V_{k+1}(s) = \max_a \sum_{s’} T(s, a, s’)[R(s, a, s’) + \gamma V_{k}(s)]$をボトムアップに計算する。</li>
+</ol>
+<p>ただし、実際は再帰関数などでトップダウンに実装する<br>（内部的にはボトムアップになる）</p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#リンク"><span class="toc-number">1.</span> <span class="toc-text">リンク</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画像"><span class="toc-number">2.</span> <span class="toc-text">画像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容"><span class="toc-number">3.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非決定的探索"><span class="toc-number">4.</span> <span class="toc-text">非決定的探索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#グリッド"><span class="toc-number">5.</span> <span class="toc-text">グリッド</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Actions"><span class="toc-number">6.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MDPの定義"><span class="toc-number">7.</span> <span class="toc-text">MDPの定義</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#マルコフ"><span class="toc-number">8.</span> <span class="toc-text">マルコフ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policy"><span class="toc-number">9.</span> <span class="toc-text">Policy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MDP-Tree"><span class="toc-number">10.</span> <span class="toc-text">MDP Tree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Discounting"><span class="toc-number">11.</span> <span class="toc-text">Discounting</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimal-Quantities-最適量"><span class="toc-number">12.</span> <span class="toc-text">Optimal Quantities(最適量)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Value-of-States"><span class="toc-number">13.</span> <span class="toc-text">Value of States</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Time-Limited-Value"><span class="toc-number">14.</span> <span class="toc-text">Time Limited Value</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

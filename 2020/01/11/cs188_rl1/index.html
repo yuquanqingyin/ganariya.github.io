@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CS188 09/25 RL1 - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/11/cs188_rl1/" />
+    <!--③-->
+    <meta property="og:title" content="CS188 09/25 RL1" />
+    <!--④-->
+    <meta property="og:description" content="ganariya blog" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,リンクhttps://inst.eecs.berkeley.edu/~cs188/fa18/https://www.youtube.com/watch?v=TiXS7vROBEghttps://in,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/11/cs188_rl1/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">CS188 09/25 RL1</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img36.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            CS188 09/25 RL1
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CS188/" rel="tag">CS188</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/12
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="リンク"><a href="#リンク" class="headerlink" title="リンク"></a>リンク</h2><p><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/</a><br><a href="https://www.youtube.com/watch?v=TiXS7vROBEg" target="_blank" rel="noopener">https://www.youtube.com/watch?v=TiXS7vROBEg</a><br><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec10/FA18_cs188_lecture10_reinforcement_learning_I_1pp.pdf" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec10/FA18_cs188_lecture10_reinforcement_learning_I_1pp.pdf</a><br><a href="http://www.snap-tck.com/room04/c01/stat/stat01/stat0104.html" target="_blank" rel="noopener">http://www.snap-tck.com/room04/c01/stat/stat01/stat0104.html</a></p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h2 id="RL"><a href="#RL" class="headerlink" title="RL"></a>RL</h2><p>RLではエージェントが環境のなかで状態$s$を知覚して行動を行い報酬を得る、という行為を繰り返す。</p>
+<p>MDPでは、環境などや報酬の関数がわかっているがRLでは分かっていないため試行しながら探していく。</p>
+<p>RLは以下のように分けられている</p>
+<ul>
+<li>モデルベース</li>
+<li>モデルフリー<ul>
+<li>passive<ul>
+<li>direct evaluation</li>
+<li>indirective evaluation</li>
+</ul>
+</li>
+<li>positive<ul>
+<li>Q学習</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="モデルベース学習"><a href="#モデルベース学習" class="headerlink" title="モデルベース学習"></a>モデルベース学習</h2><p>モデルベースでは、まず経験を生かしてRLのためのモデルを作る。<br>そして、そのモデルが正しいかをチェックする。</p>
+<ol>
+<li>MDPを学習する<ol>
+<li>$\hat{T}$を見積もるために、経験した$\hat{R}$から学習する。つまり行動を行って環境から報酬を貰いそこから遷移関数などの確率を計算する。ここで$\hat{x}$は$x$の推定値という意味である。統計らしい</li>
+</ol>
+</li>
+<li>このモデルでSolveする。これを繰り返す。</li>
+</ol>
+<h2 id="モデルベースとモデルフリー"><a href="#モデルベースとモデルフリー" class="headerlink" title="モデルベースとモデルフリー"></a>モデルベースとモデルフリー</h2><p>年齢の予測を例に違いを考える。<br>あるクラスの年齢の平均、という意味で期待値を考える。<br>期待値は</p>
+<p>$E[A] = \sum_a P(a) \times a$で求められる。</p>
+<p>Aは人間の集合であり、aは年齢, Pは確率である。</p>
+<p>ただ、これは分かっていないことが多いのでサンプリングなどで確率分布Pハットを求める。</p>
+<h3 id="モデルベース"><a href="#モデルベース" class="headerlink" title="モデルベース"></a>モデルベース</h3><p>モデルベースのとき$N$人から情報を聞いたら</p>
+<p>$\hat{P}(a) = num(a) / N$という確率になり、あとはこの推定$\hat{P}$を用いて計算すれば良い。</p>
+<h3 id="モデルフリー"><a href="#モデルフリー" class="headerlink" title="モデルフリー"></a>モデルフリー</h3><p>N人から情報を聞き</p>
+<p>$\hat{E}[A] = 1/N \sum_i a_i$で求める。</p>
+<p>これは、N人をランダムに選んだ時点でそのときにすでに年齢の確率が入っている。という考えである。<br>ほとんど大学生のクラスだったら、ランダムに選んでも大学生が多い。</p>
+<p>モデルフリーはランダムに選んだ時点でそれは母集合を推定している、という内容に近い･･･？</p>
+<h2 id="Passive-RL"><a href="#Passive-RL" class="headerlink" title="Passive RL"></a>Passive RL</h2><p>ここからはモデルフリーの内容。<br>目的は同じで固定された$\pi$が与えられた時、T,Rがわからない状態で$V(s)$を求めたい。<br>実際にエージェントを動かして報酬を経験し、学習する。</p>
+<h2 id="Direct-Evaluation"><a href="#Direct-Evaluation" class="headerlink" title="Direct Evaluation"></a>Direct Evaluation</h2><p>実際に$\pi$で動かして、その結果rewardを受け取り、何回か動かしたあとの結果を平均する。<br>簡単だが得られるものが少ない。</p>
+<h2 id="Policy-Evaluation"><a href="#Policy-Evaluation" class="headerlink" title="Policy Evaluation"></a>Policy Evaluation</h2><p>もともとのPolicy Evaluationは</p>
+<p>$V_{k+1}^{\pi} (s) = \sum_{s’} T(s, \pi (s), s’)[R(s, \pi (s), s’) + \gamma V_{k}^\pi]$</p>
+<p>になる。よって、行動$a=\pi(s)$は自明に定まるので、そのときの行動の期待値を計算する。<br>しかし、R, Tがここでは分かっていない。</p>
+<p>そこで、得られた試行による$s’$を利用して計算しよう！</p>
+<p>$sample_i = R(s, \pi(s), s_i’) + \gamma V_{k}^{\pi}$</p>
+<p>このsampleを用いれば</p>
+<p>$V_{k+1}^\pi(s) = 1/N \sum_i sample_i$として計算できる。</p>
+<h2 id="Temporal-Difference-L"><a href="#Temporal-Difference-L" class="headerlink" title="Temporal Difference L"></a>Temporal Difference L</h2><p>毎回の経験から学習する手法。</p>
+<p>transition(s, a, s’, r)を用いてV(s)を更新する。</p>
+<p>$V^{\pi}(s) = (1-\alpha)V^\pi(s) + \alpha \times sample$<br>つまり、これまでの価値と今回の試行$sample = R(s, \pi(s), s’) + r V(s’)$によって分かった試行を<br>学習率$\alpha$を決めて計算する。</p>
+<h2 id="Q学習"><a href="#Q学習" class="headerlink" title="Q学習"></a>Q学習</h2><p>ここまではValueを元に計算していた。<br>しかし、ここでは取るべき最適な行動を求めたいので、Valueだと都合が悪い<br>（Valueはどのぐらい状態が良いか？しか分からず行動がわからない、また、各状態の平均が取られるため本当にいいのか分かりづらい）</p>
+<p>そこで、Q-stateに関して計算して、より行動しやすくする。<br>強化学習ではQ学習が基本らしい。</p>
+<h2 id="Q-value-Iteration"><a href="#Q-value-Iteration" class="headerlink" title="Q-value Iteration"></a>Q-value Iteration</h2><p>$Q_0(s, a) = 0$としてinitする。</p>
+<p>そして、</p>
+<p>$Q_{k+1}(s, a) =\sum_{s’}T(s, a, s’)[R(s, a, s’) + \gamma \max_a’ Q_k(s’, a’)]$</p>
+<p>この式ではVと違って、取ってきたサンプルをそのまま学習しやすい形になっている（らしい）</p>
+<p>これは$\sum_{s’}(T ,s, a, s)$がすでに期待値のための確率になっているからである。</p>
+<h2 id="Q学習の方法"><a href="#Q学習の方法" class="headerlink" title="Q学習の方法"></a>Q学習の方法</h2><p>まず、サンプル$(s, a, s’, r)$つまり状態sで行動aをしようとした時、状態s’に移動してしまい、報酬がrだったということを試行から情報を得る。</p>
+<p>そして、この値を用いて</p>
+<p>$sample = R(s, a, s’) + \gamma \max_a Q(s’, a’)$</p>
+<p>sampleという値を今回分かった（環境から得た）R(s, a, s’)と、前回までの試行で分かっている行き先状態s’から最善の行動をすること出られるQ(s’, a’)を用いて計算する。<br>つまり、ある試行を行ったときのより正確なQ値を得る。<br>そして、</p>
+<p>$Q(s, a) = (1-\alpha)Q(s, a) + \alpha \times sample$<br>を計算する。</p>
+<p>これによって、行動の嬉しさがわかり<br>状態の嬉しさよりも、次にどう行動すべきかがより表現しやすくなる。</p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#リンク"><span class="toc-number">1.</span> <span class="toc-text">リンク</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RL"><span class="toc-number">3.</span> <span class="toc-text">RL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#モデルベース学習"><span class="toc-number">4.</span> <span class="toc-text">モデルベース学習</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#モデルベースとモデルフリー"><span class="toc-number">5.</span> <span class="toc-text">モデルベースとモデルフリー</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#モデルベース"><span class="toc-number">5.1.</span> <span class="toc-text">モデルベース</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#モデルフリー"><span class="toc-number">5.2.</span> <span class="toc-text">モデルフリー</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Passive-RL"><span class="toc-number">6.</span> <span class="toc-text">Passive RL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Direct-Evaluation"><span class="toc-number">7.</span> <span class="toc-text">Direct Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policy-Evaluation"><span class="toc-number">8.</span> <span class="toc-text">Policy Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Temporal-Difference-L"><span class="toc-number">9.</span> <span class="toc-text">Temporal Difference L</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q学習"><span class="toc-number">10.</span> <span class="toc-text">Q学習</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q-value-Iteration"><span class="toc-number">11.</span> <span class="toc-text">Q-value Iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q学習の方法"><span class="toc-number">12.</span> <span class="toc-text">Q学習の方法</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

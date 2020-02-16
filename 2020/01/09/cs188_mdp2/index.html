@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CS188 09/20 MDP2 - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/09/cs188_mdp2/" />
+    <!--③-->
+    <meta property="og:title" content="CS188 09/20 MDP2" />
+    <!--④-->
+    <meta property="og:description" content="cs188 mdp2" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,リンクhttps://inst.eecs.berkeley.edu/~cs188/fa18/https://www.youtube.com/watch?v=ZToWj64rxvQhttps://in,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/09/cs188_mdp2/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">CS188 09/20 MDP2</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img41.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            CS188 09/20 MDP2
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CS188/" rel="tag">CS188</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%8B%95%E7%94%BB%E8%AC%9B%E5%BA%A7/" rel="tag">動画講座</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/09
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="リンク"><a href="#リンク" class="headerlink" title="リンク"></a>リンク</h2><p><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/</a><br><a href="https://www.youtube.com/watch?v=ZToWj64rxvQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ZToWj64rxvQ</a><br><a href="https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec9/FA18_cs188_lecture9_MDPs_II_1pp.pdf" target="_blank" rel="noopener">https://inst.eecs.berkeley.edu/~cs188/fa18/assets/slides/lec9/FA18_cs188_lecture9_MDPs_II_1pp.pdf</a></p>
+<h2 id="画像"><a href="#画像" class="headerlink" title="画像"></a>画像</h2><p><img src="IMG_0366.jpg" alt><br><img src="IMG_0367.jpg" alt><br><img src="IMG_0368.jpg" alt><br><img src="IMG_0369.jpg" alt><br><img src="IMG_0370.jpg" alt></p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h2 id="復習"><a href="#復習" class="headerlink" title="復習"></a>復習</h2><p>utility 割り引かれた合計の報酬<br>value sから得られる最大のutility<br>q-value q-stateから得られる期待値(maxを選ぶわけではない)</p>
+<p>用語がにているので注意</p>
+<h2 id="Fixed-Policy"><a href="#Fixed-Policy" class="headerlink" title="Fixed Policy"></a>Fixed Policy</h2><p>Policyについてこれまで最適しか考えてなかった。<br>より計算量が小さいものを考えたい。</p>
+<p>ここで、固定されたPolicy$\pi(s)$があればよりシンプルに行動できる。<br>$\pi: S \to A$のように、$\pi$は状態を引数に固定されたアクションを返す。<br>つまり、ずっと上に動く、右に動くといった個体されたPolicyである。<br>よって、最適性はない。</p>
+<p>しかし、valueの計算式は</p>
+<p>$V^{\pi}(s) = \sum_{s’} T(s, \pi (s), s’)[R(s, \pi (s), s’) + \gamma V^{\pi}(s’)]$</p>
+<p>となり、Actionの選択が出てこなくなる。($\pi (s)$がアクションを返すので)<br>よって計算量が軽くなる。<br>具体的には各iterationごとに$O(s^2)$に改善される。</p>
+<h2 id="Policy-Extraction"><a href="#Policy-Extraction" class="headerlink" title="Policy Extraction"></a>Policy Extraction</h2><p>行動するための方針であるPolicyを価値から定めたいことがある。<br>つまり、今状態$s$にいるとき、同行動すればよいのだろうか？という指標がほしい。</p>
+<p>ここで、状態$s$で行うべき最適な行動を返す関数$\pi^{*}$を<br>$\pi^{*}(s) = argmax_a Q^{*}(s, a)$</p>
+<p>とする。つまり、ある行動$a$を決めた時最大の$Q$値が得られるような行動を決めたい！ということである。</p>
+<p>できれば、最大の価値が得られるように動きたいのは人間も同じである。<br>行動を決めたい場合は、Q値を利用すると良い。</p>
+<h2 id="Problems-with-value-iteration"><a href="#Problems-with-value-iteration" class="headerlink" title="Problems with value iteration"></a>Problems with value iteration</h2><p>$V_{k+1}(s) = max_a Q_k(s, a)$</p>
+<p>でValueを更新していく。</p>
+<p>しかし、これにはいくつか問題点が存在する。</p>
+<ol>
+<li>遅い</li>
+<li>ある段階で値が変化しなくなる、つまり最大はだいたい最大である</li>
+<li>policyは意外と早く決まる</li>
+</ol>
+<h2 id="Policy-Iteration"><a href="#Policy-Iteration" class="headerlink" title="Policy Iteration"></a>Policy Iteration</h2><p>この問題を解決するために、より早くするために<br>以下の処理$1, 2$を繰り返し実行することにする。</p>
+<ol>
+<li>Policy Evaluation<ol>
+<li>固定されたPolicy$\pi$で永遠にValue, Utilityを計算し続ける　convergenしたら終わり</li>
+<li>$V_{k+1}^{\pi_i} = \sum_{s’}T(s, \pi (s), s’)[R(s, \pi (s), s’) + \gamma V_k^{\pi}(s’)]$</li>
+</ol>
+</li>
+<li>Policy Improvement<ol>
+<li>計算されたulilityを用いてactionを変えることを試す</li>
+<li>$\pi_{i+1}(s) = argmax_a \sum_{s’}T(s, s’, a)[R(s, a, s’) + V^{\pi_i}(s’)]$<ol>
+<li>これは状態sで新たに作られるPolicyは、新しく行動aを決めて、そのときのR(s, a, s’)とEvaluationで求めた$i$における価値の和</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>となる。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>MDPでは最適値を求めたいならValue iterationかpolicy iterationを使う。<br>もし、最適な行動を決めたいならpolicy iterationしよう。</p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#リンク"><span class="toc-number">1.</span> <span class="toc-text">リンク</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画像"><span class="toc-number">2.</span> <span class="toc-text">画像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容"><span class="toc-number">3.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#復習"><span class="toc-number">4.</span> <span class="toc-text">復習</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fixed-Policy"><span class="toc-number">5.</span> <span class="toc-text">Fixed Policy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policy-Extraction"><span class="toc-number">6.</span> <span class="toc-text">Policy Extraction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems-with-value-iteration"><span class="toc-number">7.</span> <span class="toc-text">Problems with value iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policy-Iteration"><span class="toc-number">8.</span> <span class="toc-text">Policy Iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-number">9.</span> <span class="toc-text">まとめ</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

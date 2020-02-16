@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>hexo基本コマンド+プラグイン - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/02/hexo_command/" />
+    <!--③-->
+    <meta property="og:title" content="hexo基本コマンド+プラグイン" />
+    <!--④-->
+    <meta property="og:description" content="プラグインがおおすぎるっぴ" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,はじめに前回
+hexoの導入で引っかかりやすい点についてまとめました。
+今回は、自分が必要なコマンド集やプラグインのまとめを行おうと思います。
+コマンド集ページ生成1hexo new post &#34;h,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/02/hexo_command/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">hexo基本コマンド+プラグイン</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img18.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            hexo基本コマンド+プラグイン
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/02
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p><a href="/2020/01/02/hexo_command/">前回</a></p>
+<p>hexoの導入で引っかかりやすい点についてまとめました。</p>
+<p>今回は、自分が必要なコマンド集やプラグインのまとめを行おうと思います。</p>
+<h2 id="コマンド集"><a href="#コマンド集" class="headerlink" title="コマンド集"></a>コマンド集</h2><h3 id="ページ生成"><a href="#ページ生成" class="headerlink" title="ページ生成"></a>ページ生成</h3><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post "hello_world"</span><br></pre></td></tr></tbody></table></figure>
+
+<p>hello_worldというポストを作成します。</p>
+<p>これ紛らわしいんですが<br>postは投稿<br>pageは固定ページになっています。</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new diary --path diary/2020-01-01</span><br></pre></td></tr></tbody></table></figure>
+
+<p>/scaffoldsのdiary.mdをもとに<br>/source/_posts/diary/2020-01-01.mdを作成します。</p>
+<p>ポストが大きくなるときは、–pathを設定することである特定のディレクトリにファイルを作成することができます。</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "tags"</span><br></pre></td></tr></tbody></table></figure>
+
+<p>tagsとよばれる<code>固定ページ</code>を作成します。</p>
+<p>diasporaのmenuに設定することで、固定ページにできます。</p>
+<p><img src="menu.png" alt></p>
+<p>このような部分に表示できます。</p>
+<h3 id="ページ表示"><a href="#ページ表示" class="headerlink" title="ページ表示"></a>ページ表示</h3><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></tbody></table></figure>
+
+<p>サーバーを立ててlocalhostでチェックできます。<br>このコマンドを打てば、自動で毎回js, css, mdなどもすべて毎回読み直してくれるので<br>hexo serverを何回も打つ必要はありません（僕はなんとなく打ってしまっていますが）</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy -g</span><br></pre></td></tr></tbody></table></figure>
+
+<p>ページ生成しながらデプロイします。</p>
+<hr>
+<h2 id="プラグイン紹介"><a href="#プラグイン紹介" class="headerlink" title="プラグイン紹介"></a>プラグイン紹介</h2><p>現在使用しているプラグインを紹介していきます。</p>
+<figure class="highlight json hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="hljs-attr">"dependencies"</span>: {</span><br><span class="line">    <span class="hljs-attr">"hexo"</span>: <span class="hljs-string">"^4.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-asset-link"</span>: <span class="hljs-string">"^2.0.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-deployer-git"</span>: <span class="hljs-string">"^2.1.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-easy-tags-plugin"</span>: <span class="hljs-string">"^1.0.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-generator-archive"</span>: <span class="hljs-string">"^1.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-generator-category"</span>: <span class="hljs-string">"^1.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-generator-feed"</span>: <span class="hljs-string">"^2.2.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-generator-index"</span>: <span class="hljs-string">"^1.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-generator-search"</span>: <span class="hljs-string">"^2.4.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-generator-tag"</span>: <span class="hljs-string">"^1.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-github-card"</span>: <span class="hljs-string">"^1.0.3"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-inject"</span>: <span class="hljs-string">"^1.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-pdf"</span>: <span class="hljs-string">"^1.1.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-renderer-ejs"</span>: <span class="hljs-string">"^1.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-renderer-marked"</span>: <span class="hljs-string">"^2.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-renderer-stylus"</span>: <span class="hljs-string">"^1.1.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-server"</span>: <span class="hljs-string">"^1.0.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-tag-link-preview"</span>: <span class="hljs-string">"^1.2.3"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-tag-niconico"</span>: <span class="hljs-string">"^1.0.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-tag-soundcloud"</span>: <span class="hljs-string">"^1.0.2"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-tag-twitter"</span>: <span class="hljs-string">"^1.0.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"hexo-wordcount"</span>: <span class="hljs-string">"^6.0.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"object-assign"</span>: <span class="hljs-string">"^4.1.1"</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="hexo-github-card"><a href="#hexo-github-card" class="headerlink" title="hexo-github-card"></a><a href="https://github.com/Gisonrg/hexo-github-card" target="_blank" rel="noopener">hexo-github-card</a></h3><p>GitHub Cardを表示するリポジトリのようです。</p>
+<div style="text-align: center">
+  <div class="github-card" data-user="ganariya" data-repo data-height="200" data-width="400" data-theme="default" data-target data-client-id data-client-secret></div>
+</div>
+<script src="/github-card-lib/githubcard.js"></script>
+
+
+<p>設定は以下のようです。　</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% githubCard user:your_user [repo:your_repo] [width:400] [height:200] [theme:default] [client_id:your_client_id] [client_secret:your_client_secret] [align:text-align_position] %}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="hexo-pdf"><a href="#hexo-pdf" class="headerlink" title="hexo-pdf"></a><a href="https://github.com/superalsrk/hexo-pdf" target="_blank" rel="noopener">hexo-pdf</a></h3><p>PDFを表示するプラグインです。</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">normal</span><br><span class="line">{% pdf http://7xov2f.com1.z0.glb.clouddn.com/bash_freshman.pdf %}</span><br><span class="line"></span><br><span class="line">google drive</span><br><span class="line">{% pdf https://drive.google.com/file/d/0B6qSwdwPxPRdTEliX0dhQ2JfUEU/preview %}</span><br><span class="line"></span><br><span class="line">slideshare</span><br><span class="line">{% pdf http://www.slideshare.net/slideshow/embed_code/key/8Jl0hUt2OKUOOE %}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="hexo-tag-link-preview"><a href="#hexo-tag-link-preview" class="headerlink" title="hexo-tag-link-preview"></a><a href="https://github.com/minamo173/hexo-tag-link-preview" target="_blank" rel="noopener">hexo-tag-link-preview</a></h3><p>URLを展開してくれるプラグインです。</p>
+<a href="https://qiita.com/spaces/items/39a822050b6e22d35123" class="link-preview" target="_blank" rel="nofollow"><div class="link-area"><div class="og-image"><img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Fogp-background-1150d8b18a7c15795b701a55ae908f94.png?ixlib=rb-1.2.2&w=1200&mark=https%3A%2F%2Fqiita-user-contents.imgix.net%2F~text%3Fixlib%3Drb-1.2.2%26w%3D840%26h%3D380%26txt%3D%25E5%25B9%25B3%25E6%2588%2590%25E3%2581%25AE%25E3%2581%2586%25E3%2581%25A1%25E3%2581%25AB%25E3%2582%2584%25E3%2582%2581%25E3%2581%259F%25E3%2581%258B%25E3%2581%25A3%25E3%2581%259F%25E3%2580%258EIT%25E3%2581%25AE7%25E3%2581%25A4%25E3%2581%25AE%25E7%2584%25A1%25E6%2584%258F%25E5%2591%25B3%25E3%2581%25AA%25E7%25BF%2592%25E6%2585%25A3%25E3%2580%258F%26txt-color%3D%2523333%26txt-font%3DAvenir-Black%26txt-size%3D54%26txt-clip%3Dellipsis%26txt-align%3Dcenter%252Cmiddle%26s%3D1d30dfd2d3f6db7aced0dcd51125bdf9&mark-align=center%2Cmiddle&blend=https%3A%2F%2Fqiita-user-contents.imgix.net%2F~text%3Fixlib%3Drb-1.2.2%26w%3D840%26h%3D500%26txt%3D%2540spaces%26txt-color%3D%2523333%26txt-font%3DAvenir-Black%26txt-size%3D45%26txt-align%3Dright%252Cbottom%26s%3Dbc1683f432e35688dd19322d95eecdd4&blend-align=center%2Cmiddle&blend-mode=normal&s=6287de88072551cd97fa9b87a42d829b"></div><div class="descriptions"><div class="og-title">平成のうちにやめたかった『ITの7つの無意味な習慣』 - Qiita</div><div class="og-description">2019年の今年は「令和元年」であるわけだが、年初はまだ「平成31年」だったので、ギリギリまだ平成ともいえる。ところで、ITの世界にもいろいろな都市伝説や根拠は薄いけれどもかっちり守られているしきたり/習慣があり、少なくとも今の世界で...</div></div></div></a>
+
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% linkPreview https://www.amazon.com/ _blank nofollow %}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="hexo-tag-niconico"><a href="#hexo-tag-niconico" class="headerlink" title="hexo-tag-niconico"></a><a href="https://github.com/yuichi555/hexo-tag-niconico" target="_blank" rel="noopener">hexo-tag-niconico</a></h3><p>ニコニコ動画のリンクを貼ってくれるプラグインです。</p>
+<div><script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/sm36035671"></script></div>
+
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{% douga  sm36035671 %}</span><br><span class="line">{% seiga url %}</span><br><span class="line">{% nama url %}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="hexo-tag-soundcloud"><a href="#hexo-tag-soundcloud" class="headerlink" title="hexo-tag-soundcloud"></a><a href="https://github.com/tea3/hexo-tag-soundcloud" target="_blank" rel="noopener">hexo-tag-soundcloud</a></h3><p>サウンドクラウドのリンクを貼ってくれるプラグインです。</p>
+<div class="soundcloud-wrapper"><iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnyankobrq%2Fnyankobrq-memories-free-dl&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe></div>
+
+
+<h3 id="hexo-tag-twitter"><a href="#hexo-tag-twitter" class="headerlink" title="hexo-tag-twitter"></a><a href="https://github.com/tea3/hexo-tag-twitter" target="_blank" rel="noopener">hexo-tag-twitter</a></h3><p>ツイートを展開してくれるプラグインです。</p>
+<div class="twitter-wrapper"><blockquote class="twitter-tweet"><a href="https://twitter.com/ganariya/status/1212375099380133888" target="_blank" rel="noopener"></a></blockquote></div><script async defer src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% twitter https://twitter.com/ganariya/status/1212375099380133888 %}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="hexo-wordcount"><a href="#hexo-wordcount" class="headerlink" title="hexo-wordcount"></a><a href="https://github.com/willin/hexo-wordcount" target="_blank" rel="noopener">hexo-wordcount</a></h3><p>単語数などのカウントプラグインです。<br>まだ設定してないです。</p>
+<h3 id="hexo-asset-link"><a href="#hexo-asset-link" class="headerlink" title="hexo-asset-link"></a><a href="https://github.com/liolok/hexo-asset-link" target="_blank" rel="noopener">hexo-asset-link</a></h3><p>markdown表記で画像をはれるプラグインです。</p>
+<p>post_asset_folderはtrueにすると便利になります。</p>
+<h3 id="hexo-easy-tags-plugin"><a href="#hexo-easy-tags-plugin" class="headerlink" title="hexo-easy-tags-plugin"></a><a href="https://github.com/dailyrandomphoto/hexo-easy-tags-plugin" target="_blank" rel="noopener">hexo-easy-tags-plugin</a></h3><p>タグの曖昧表記を一括にしてくれます。<br>これ便利です＞＜</p>
+<h3 id="hexo-generator-feed"><a href="#hexo-generator-feed" class="headerlink" title="hexo-generator-feed"></a><a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="noopener">hexo-generator-feed</a></h3><p>feed系を作成するリポジトリです。<br>これを使ってsearchページを作っています。</p>
+<h3 id="hexo-generator-search"><a href="#hexo-generator-search" class="headerlink" title="hexo-generator-search"></a><a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a></h3><p>サーチページを作るためのプラグインです。</p>
+<p><a href="https://yoshinorin.net/2018/11/15/implement-search-feature-to-hexo/" target="_blank" rel="noopener">https://yoshinorin.net/2018/11/15/implement-search-feature-to-hexo/</a></p>
+<p>こちらのページを参考にして、適宜バグを修正して利用させていただいています。</p>
+<h3 id="hexo-include-markdown"><a href="#hexo-include-markdown" class="headerlink" title="hexo-include-markdown"></a><a href="https://photo-tea.com/p/17/hexo-include-markdown/" target="_blank" rel="noopener">hexo-include-markdown</a></h3><p>文章中に他のマークダウンを挿入します。<br>テンプレートエンジンのように、マークダウンを分割して使いまわして利用できます。<br>定型文やJupyterNotebookなどで利用することが考えられます。</p>
+<p><code><!ーー md template.md ーー></code></p>
+<p>を本文中に書くことで読み込めるようです。</p>
+<p>読み込まれるパスは<code>source/_template/teamplate.md</code>となるため、<br>アセットをtrueにしていて、ここから読み出したいんですが、どうしましょうか･･･</p>
+<h2 id="最後に"><a href="#最後に" class="headerlink" title="最後に"></a>最後に</h2><p>プラグインとコマンドをまとめました。<br>適宜修正していこうと思います。</p>
+<p>ご不明な点がありましたら、コメントいただければ幸いです！</p>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#はじめに"><span class="toc-number">1.</span> <span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#コマンド集"><span class="toc-number">2.</span> <span class="toc-text">コマンド集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ページ生成"><span class="toc-number">2.1.</span> <span class="toc-text">ページ生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ページ表示"><span class="toc-number">2.2.</span> <span class="toc-text">ページ表示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#プラグイン紹介"><span class="toc-number">3.</span> <span class="toc-text">プラグイン紹介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-github-card"><span class="toc-number">3.1.</span> <span class="toc-text">hexo-github-card</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-pdf"><span class="toc-number">3.2.</span> <span class="toc-text">hexo-pdf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-tag-link-preview"><span class="toc-number">3.3.</span> <span class="toc-text">hexo-tag-link-preview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-tag-niconico"><span class="toc-number">3.4.</span> <span class="toc-text">hexo-tag-niconico</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-tag-soundcloud"><span class="toc-number">3.5.</span> <span class="toc-text">hexo-tag-soundcloud</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-tag-twitter"><span class="toc-number">3.6.</span> <span class="toc-text">hexo-tag-twitter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-wordcount"><span class="toc-number">3.7.</span> <span class="toc-text">hexo-wordcount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-asset-link"><span class="toc-number">3.8.</span> <span class="toc-text">hexo-asset-link</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-easy-tags-plugin"><span class="toc-number">3.9.</span> <span class="toc-text">hexo-easy-tags-plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-generator-feed"><span class="toc-number">3.10.</span> <span class="toc-text">hexo-generator-feed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-generator-search"><span class="toc-number">3.11.</span> <span class="toc-text">hexo-generator-search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-include-markdown"><span class="toc-number">3.12.</span> <span class="toc-text">hexo-include-markdown</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最後に"><span class="toc-number">4.</span> <span class="toc-text">最後に</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>

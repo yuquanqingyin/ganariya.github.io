@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="loading">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LeetCode biweekly17 - ganariya&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="twitter:card" content="summary" />
+    <!--①-->
+    <meta name="twitter:site" content="@ganariya" />
+    <!--②-->
+    <meta property="og:url" content="http://ganariya.github.io/2020/01/12/leetcode_17/" />
+    <!--③-->
+    <meta property="og:title" content="LeetCode biweekly17" />
+    <!--④-->
+    <meta property="og:description" content="LeetCode" />
+    <!--⑤-->
+    <meta property="og:image" content="https://ganariya.github.io/img/welcome-cover.jpg" />
+    <!--⑥-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <meta name="keywords" content="競技プログラミング, ブログ, ganariya, バーチャルYouTuber, アニメ, アルゴリズム, 群知能,"> 
+    
+    <meta name="description" content="競技プログラミングやアプリ開発などをまとめています。,普段はScrapboxに書いていますが
+LeetCodeくんは別に書くほどでもないのでこっちにかきます
+LeetCodeくん面白くないなぁ（問題とか分かりづらさとか諸々で）
+https://leet,"> 
+    
+    <meta name="author" content="ganariya"> 
+    
+    <link rel="alternative" href="atom.xml" title="ganariya&#39;s blog" type="application/atom+xml"> 
+    
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8691406134231910",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">ganariya&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ganariya.github.io"></a>
+    <div title="play/stop" class="icon-play"></div>
+    <div title="twitter">
+
+        <a href="http://twitter.com/share?url=http://ganariya.github.io/2020/01/12/leetcode_17/" target="_blank" rel="noopener" class="icon-twitter">
+        </a>
+    </div>
+    <h3 class="subtitle">LeetCode biweekly17</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+        <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="QRコード" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="site-intro" style="height: 50vh;">
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/img/img86.png)"></div>
+    <div class="site-intro-meta">
+        <h1 class="intro-title">
+            LeetCode biweekly17
+        </h1>
+        <div class="post-intros">
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+            <div class="post-intro-meta" style="margin-top: 1rem;">
+                2020/01/12
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article">
+    <div class='main'>
+        <div class="stuff">
+            <span></span>
+        </div>
+        <div class="content markdown">
+            <html><head></head><body><p>普段はScrapboxに書いていますが</p>
+<p>LeetCodeくんは別に書くほどでもないのでこっちにかきます</p>
+<p>LeetCodeくん面白くないなぁ（問題とか分かりづらさとか諸々で）</p>
+<p><a href="https://leetcode.com/contest/biweekly-contest-17" target="_blank" rel="noopener">https://leetcode.com/contest/biweekly-contest-17</a></p>
+<h2 id="1313-Decompress-Run-Length-Encoded-List"><a href="#1313-Decompress-Run-Length-Encoded-List" class="headerlink" title="1313. Decompress Run-Length Encoded List"></a>1313. Decompress Run-Length Encoded List</h2><p>やるだけをします。</p>
+<figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> {</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">vector</span><<span class="hljs-keyword">int</span>> decompressRLElist(<span class="hljs-built_in">vector</span><<span class="hljs-keyword">int</span>> &nums) {</span><br><span class="line">    <span class="hljs-keyword">int</span> len = nums.<span class="hljs-built_in">size</span>();</span><br><span class="line">    <span class="hljs-built_in">vector</span><<span class="hljs-keyword">int</span>> res;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i < len / <span class="hljs-number">2</span>; i++) {</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j < nums[i * <span class="hljs-number">2</span>]; j++) {</span><br><span class="line">            res.push_back(nums[i * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>]);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-keyword">return</span> res;</span><br><span class="line">}</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="1314-Matrix-Block-Sum"><a href="#1314-Matrix-Block-Sum" class="headerlink" title="1314. Matrix Block Sum"></a>1314. Matrix Block Sum</h2><p>やるだけをします。</p>
+<p>入力形式強いられるのすごい嫌だなぁ</p>
+<figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> {</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line"><span class="hljs-built_in">vector</span><<span class="hljs-built_in">vector</span><<span class="hljs-keyword">int</span>>> matrixBlockSum(<span class="hljs-built_in">vector</span><<span class="hljs-built_in">vector</span><<span class="hljs-keyword">int</span>>> &mat, <span class="hljs-keyword">int</span> K) {</span><br><span class="line">    <span class="hljs-keyword">int</span> H = mat.<span class="hljs-built_in">size</span>();</span><br><span class="line">    <span class="hljs-keyword">int</span> W = mat[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">vector</span><<span class="hljs-built_in">vector</span><<span class="hljs-keyword">int</span>>> ans(H, <span class="hljs-built_in">vector</span><<span class="hljs-keyword">int</span>>(W, <span class="hljs-number">0</span>));</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i < H; i++) {</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j < W; j++) {</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> a = -K; a <= K; a++) {</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> b = -K; b <= K; b++) {</span><br><span class="line">                    <span class="hljs-keyword">int</span> y = i + a;</span><br><span class="line">                    <span class="hljs-keyword">int</span> x = j + b;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (y >= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> y < H <span class="hljs-keyword">and</span> x >= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> x < W) {</span><br><span class="line">                        ans[i][j] += mat[y][x];</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="even-value"><a href="#even-value" class="headerlink" title="even value"></a>even value</h2><p>rootがどのノードかくらい書いてほしいですが･･･</p>
+<p>親の親が偶数なら、自分のValueを加算する問題。</p>
+<p>自分が偶数なら、子供の子供のValueを足す、というふうに見れば<br>あとはDFSをすればよい。</p>
+<p>こういうポインタ系でやるのひさしぶりすぎてすごく時間かかった･･･</p>
+<figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"> * struct TreeNode {</span></span><br><span class="line"><span class="hljs-comment"> *     int val;</span></span><br><span class="line"><span class="hljs-comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="hljs-comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="hljs-comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span></span><br><span class="line"><span class="hljs-comment"> * };</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> {</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(TreeNode* v, <span class="hljs-keyword">bool</span> p, <span class="hljs-keyword">bool</span> pp, <span class="hljs-keyword">int</span>& ans)</span></span>{</span><br><span class="line">        <span class="hljs-keyword">if</span>(v == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span>(p){</span><br><span class="line">            ans += v->val;</span><br><span class="line">        }</span><br><span class="line">        func(v->left, pp, (v->val) % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>, ans);</span><br><span class="line">        func(v->right, pp, (v->val) % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>, ans);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sumEvenGrandparent</span><span class="hljs-params">(TreeNode* root)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        func(root, <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>, ans);</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<p>これ疑問なんですが、作問者全言語パターンかくのつらすぎませんか？</p>
+<h2 id="1316-Distinct-Echo-Substrings"><a href="#1316-Distinct-Echo-Substrings" class="headerlink" title="1316. Distinct Echo Substrings"></a>1316. Distinct Echo Substrings</h2><p>ローリングハッシュをはればいいです。<br>tupleもどうやらsetに入るみたいなのでうきうきですね</p>
+<figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> {</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">RollingHash</span> {</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">using</span> long_type = <span class="hljs-keyword">unsigned</span>;</span><br><span class="line">    <span class="hljs-keyword">using</span> hash_type = tuple<long_type, long_type, long_type>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span>:</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> s_len;</span><br><span class="line"></span><br><span class="line">    long_type mod1;</span><br><span class="line">    long_type mod2;</span><br><span class="line">    long_type mod3;</span><br><span class="line"></span><br><span class="line">    long_type base1;</span><br><span class="line">    long_type base2;</span><br><span class="line">    long_type base3;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">vector</span><long_type> hash1;</span><br><span class="line">    <span class="hljs-built_in">vector</span><long_type> hash2;</span><br><span class="line">    <span class="hljs-built_in">vector</span><long_type> hash3;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">vector</span><long_type> pow1;</span><br><span class="line">    <span class="hljs-built_in">vector</span><long_type> pow2;</span><br><span class="line">    <span class="hljs-built_in">vector</span><long_type> pow3;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    RollingHash() :</span><br><span class="line">            base1(<span class="hljs-number">1009</span>), base2(<span class="hljs-number">1007</span>), base3(<span class="hljs-number">2339</span>),</span><br><span class="line">            mod1(<span class="hljs-number">1000000007</span>), mod2(<span class="hljs-number">1000000009</span>), mod3(<span class="hljs-number">1000000087</span>) {</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    RollingHash(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> s) :</span><br><span class="line">            RollingHash() {</span><br><span class="line">        init(s);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> s)</span> </span>{</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> n = s.<span class="hljs-built_in">size</span>();</span><br><span class="line">        s_len = n;</span><br><span class="line"></span><br><span class="line">        hash1.assign(n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">        hash2.assign(n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">        hash3.assign(n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">        pow1.assign(n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line">        pow2.assign(n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line">        pow3.assign(n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i < n; i++) {</span><br><span class="line">            hash1[i + <span class="hljs-number">1</span>] = ((hash1[i] + s[i]) * base1);</span><br><span class="line">            hash2[i + <span class="hljs-number">1</span>] = ((hash2[i] + s[i]) * base2);</span><br><span class="line">            hash3[i + <span class="hljs-number">1</span>] = ((hash3[i] + s[i]) * base3);</span><br><span class="line">            pow1[i + <span class="hljs-number">1</span>] = (pow1[i] * base1);</span><br><span class="line">            pow2[i + <span class="hljs-number">1</span>] = (pow2[i] * base2);</span><br><span class="line">            pow3[i + <span class="hljs-number">1</span>] = (pow3[i] * base3);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//0-index</span></span><br><span class="line">    <span class="hljs-comment">//s[l, r)のハッシュタプルを返す</span></span><br><span class="line">    <span class="hljs-function">hash_type <span class="hljs-title">get_hash_tuple</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>{</span><br><span class="line">        long_type h1 = ((hash1[r] - hash1[l] * pow1[r - l] + mod1) % mod1 + mod1) % mod1;</span><br><span class="line">        long_type h2 = ((hash2[r] - hash2[l] * pow2[r - l] + mod2) % mod2 + mod2) % mod2;</span><br><span class="line">        long_type h3 = ((hash3[r] - hash3[l] * pow3[r - l] + mod3) % mod3 + mod3) % mod3;</span><br><span class="line">        <span class="hljs-keyword">return</span> make_tuple(h1, h2, h3);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//not verify</span></span><br><span class="line">    <span class="hljs-comment">//htype_1のハッシュの後ろに長さh2_lenのハッシュを結合する</span></span><br><span class="line">    <span class="hljs-function">hash_type <span class="hljs-title">concat</span><span class="hljs-params">(hash_type h_tup1, hash_type h_tup2, <span class="hljs-keyword">int</span> h2_len)</span> </span>{</span><br><span class="line">        long_type h1 = (<span class="hljs-built_in">get</span><<span class="hljs-number">0</span>>(h_tup1) * pow1[h2_len] + <span class="hljs-built_in">get</span><<span class="hljs-number">0</span>>(h_tup2)) % mod1;</span><br><span class="line">        long_type h2 = (<span class="hljs-built_in">get</span><<span class="hljs-number">1</span>>(h_tup1) * pow2[h2_len] + <span class="hljs-built_in">get</span><<span class="hljs-number">1</span>>(h_tup2)) % mod2;</span><br><span class="line">        long_type h3 = (<span class="hljs-built_in">get</span><<span class="hljs-number">2</span>>(h_tup1) * pow3[h2_len] + <span class="hljs-built_in">get</span><<span class="hljs-number">2</span>>(h_tup2)) % mod3;</span><br><span class="line">        <span class="hljs-keyword">return</span> make_tuple(h1, h2, h3);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//先頭i文字のハッシュタプルを返す</span></span><br><span class="line">    <span class="hljs-function">hash_type <span class="hljs-title">get_from_head</span><span class="hljs-params">(<span class="hljs-keyword">int</span> len)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> get_hash_tuple(<span class="hljs-number">0</span>, len);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//末尾i文字のハッシュタプルを返す</span></span><br><span class="line">    <span class="hljs-function">hash_type <span class="hljs-title">get_from_tail</span><span class="hljs-params">(<span class="hljs-keyword">int</span> len)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> get_hash_tuple(s_len - len, s_len);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//sを含む個数の計算</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">contain</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">int</span> ret = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> m_len = <span class="hljs-keyword">this</span>->s_len;</span><br><span class="line">        <span class="hljs-keyword">int</span> o_len = s.<span class="hljs-built_in">size</span>();</span><br><span class="line">        <span class="hljs-function">RollingHash <span class="hljs-title">o_hash</span><span class="hljs-params">(s)</span></span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i < m_len - o_len + <span class="hljs-number">1</span>; i++) {</span><br><span class="line">            <span class="hljs-keyword">auto</span> h1 = get_hash_tuple(i, i + o_len);</span><br><span class="line">            <span class="hljs-keyword">auto</span> h2 = o_hash.get_hash_tuple(<span class="hljs-number">0</span>, o_len);</span><br><span class="line">            <span class="hljs-keyword">if</span> (RollingHash::same(h1, h2)) ret++;</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(hash_type h_tup1, hash_type h_tup2)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> h_tup1 == h_tup2;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">typedef</span> tuple<<span class="hljs-keyword">unsigned</span>, <span class="hljs-keyword">unsigned</span>, <span class="hljs-keyword">unsigned</span>> TP;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">distinctEchoSubstrings</span><span class="hljs-params">(<span class="hljs-built_in">string</span> <span class="hljs-built_in">text</span>)</span> </span>{</span><br><span class="line">    <span class="hljs-keyword">int</span> n = <span class="hljs-built_in">text</span>.<span class="hljs-built_in">size</span>();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">RollingHash <span class="hljs-title">hash</span><span class="hljs-params">(<span class="hljs-built_in">text</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">set</span><TP> st;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i < n; i++) {</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j <= n; j++) {</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (i + <span class="hljs-number">2</span> * j > n) <span class="hljs-keyword">break</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span> (hash.get_hash_tuple(i, i + j) == hash.get_hash_tuple(i + j, i + <span class="hljs-number">2</span> * j)) {</span><br><span class="line">                st.insert(hash.get_hash_tuple(i, i + j));</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-keyword">return</span> st.<span class="hljs-built_in">size</span>();</span><br><span class="line">}</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+</body></html>
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='https://ganariya.github.io/bgm/denno.mp3'></li>
+                
+                
+                
+                <li title='1' data-url='https://ganariya.github.io/bgm/naked.mp3'></li>
+                
+                
+            </ul>
+            
+        </div>
+        
+<div id='gitalk-container' class="comment link" data-ae='false'
+    data-ci='123e2065f81f0b4413e4' data-cs='aee192cd55101fa398cfb4855bc0c5ae729f1733' data-r='ganariya.github.io'
+    data-o='ganariya' data-a='ganariya' data-d='false'>
+    Comment</div>
+
+        <div style="margin-bottom: 5em;">
+
+        </div>
+    </div>
+    
+    <div class='side'>
+
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1313-Decompress-Run-Length-Encoded-List"><span class="toc-number">1.</span> <span class="toc-text">1313. Decompress Run-Length Encoded List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1314-Matrix-Block-Sum"><span class="toc-number">2.</span> <span class="toc-text">1314. Matrix Block Sum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#even-value"><span class="toc-number">3.</span> <span class="toc-text">even value</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1316-Distinct-Echo-Substrings"><span class="toc-number">4.</span> <span class="toc-text">1316. Distinct Echo Substrings</span></a></li></ol>
+    </div>
+    
+
+</div>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<!-- 
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+ -->
+
+<script src="/js/search.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<script src="//unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155266467-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+<script>
+    AOS.init()
+</script>
+
+</html>
